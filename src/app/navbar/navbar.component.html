@@ -1,0 +1,36 @@
+<nav
+    class="shadow-1 flex w-full justify-content-between align-items-center py-4 nav px-3 fadein animation-duration-1000   ">
+    <h2>Mina-House</h2>
+    <ul class="flex list-none">
+        <li class="mr-4 hidden lg:block">
+            <a routerLink="/"> Home</a>
+        </li>
+        <li class="mr-4 hidden lg:block"><a routerLink="/products"> Products</a></li>
+        <li class="mr-4 hidden lg:block"><a routerLink="/users/register"> Sign up</a></li>
+        <li class="mr-4 hidden lg:block"><a routerLink="/users">Login</a></li>
+        <li class="hidden lg:block">
+
+            <a routerLink="/cart"> <i class="pi pi-shopping-cart mr-4" pBadge style="font-size: 1.3rem" value="0"></i>
+            </a>
+
+        </li>
+
+        <li class="mr-4  lg:hidden" (click)="display = true"><i class="pi pi-bars" style="font-size:1rem;"></i></li>
+    </ul>
+</nav>
+
+
+<p-sidebar [(visible)]="display" position="right" styleClass="p-sidebar-sm" [style]="{'text-align':'center'}">
+    Content
+    <ul class="list-none">
+        <li>Home</li>
+        <li>products</li>
+        <li>Sign up</li>
+        <li>Login</li>
+        <li>
+
+            <!-- <i class="pi pi-shopping-cart"
+            style="font-size:1rem;"></i> -->
+        </li>
+    </ul>
+</p-sidebar>
