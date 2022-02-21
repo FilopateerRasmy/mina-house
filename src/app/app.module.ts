@@ -11,7 +11,7 @@ import {CarouselModule} from 'primeng/carousel';
 import {BadgeModule} from 'primeng/badge';
 import { HomeComponent } from './home/home.component';
 import { CartModule } from './cart/cart.module';
-
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { CartModule } from './cart/cart.module';
     ButtonModule,
     CarouselModule,
     BadgeModule,
-    CartModule
+    CartModule,
+    HttpClientModule
     
   ],
   providers: [],

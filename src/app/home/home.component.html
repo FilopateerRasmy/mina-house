@@ -1,1 +1,22 @@
-<p>home works!</p>
+
+<div class="m-auto fadeinright animation-duration-1000">
+    <img class="w-full h-25rem" src="https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+
+</div>
+<div class="fadeinleft animation-duration-1000">
+    <p-carousel [value]="categories" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions">
+  
+        <ng-template let-category pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="m-3 ">
+                        <img src="{{category.image}}" [alt]="category.name" class="product-image w-full categoty-image" />
+                    </div>
+                    <div>
+                        <h4 class="mb-1">{{category.name}}</h4>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>
