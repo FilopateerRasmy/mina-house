@@ -1,0 +1,14 @@
+
+<div class="absolute top-50 left-50 translate-x-50 translate-y-50" *ngIf="isLoading">
+   
+    <p-progressSpinner [style]="{width: '100px', height: '80px'}" styleClass="custom-spinner " strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+
+</div>
+
+
+
+        <ng-container *ngIf="productsArr?.length">
+            <div *ngFor="let product of productsArr">
+                <h2>{{product.name}}</h2>
+            </div>
+        </ng-container>

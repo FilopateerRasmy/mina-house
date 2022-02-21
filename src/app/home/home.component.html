@@ -4,16 +4,17 @@
 
 </div>
 <div class="fadeinleft animation-duration-1000">
+    <h2 class="text-center mt-3">Categories</h2>
     <p-carousel [value]="categories" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions">
-  
+    
         <ng-template let-category pTemplate="item">
-            <div class="product-item">
+            <div class="product-item cursor-pointer" >
                 <div class="product-item-content">
                     <div class="m-3 ">
-                        <img src="{{category.image}}" [alt]="category.name" class="product-image w-full categoty-image" />
+                        <img src="{{category.image}}" [alt]="category.name" class="product-image w-full categoty-image" [routerLink]="['/products/categories', category._id]"/>
                     </div>
                     <div>
-                        <h4 class="mb-1">{{category.name}}</h4>
+                        <h4 class="mb-1 text-center">{{category.name}}</h4>
                     </div>
                 </div>
             </div>

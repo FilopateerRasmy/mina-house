@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CategoryService } from '../services/category.service';
-import { ICategory } from '../shared-models-and-interfaces/category';
+import { ICategory } from '../shared/category';
 
 @Component({
   selector: 'app-home',
