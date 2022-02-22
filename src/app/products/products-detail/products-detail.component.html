@@ -1,4 +1,9 @@
-<div class="w-4 shadow-2 m-3" *ngIf="product" >
+<div class="shadow-2 h-fill m-3 flex justify-content-around m-6 p-6" *ngIf="product" >
         
-        <img class="w-full" [src]="product.image" alt="{{product.name}}">
+        <img class="" [src]="product.image" alt="{{product.name}}">
+        <div class="text-center">
+                <h2>{{product.name}}</h2>
+                <p>{{product.description}}</p>
+        </div>
+        
 </div>
