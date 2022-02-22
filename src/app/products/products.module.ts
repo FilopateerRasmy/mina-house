@@ -9,6 +9,15 @@ import {CardModule} from 'primeng/card';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProgressBarModule } from 'primeng/progressbar';
 import {ButtonModule} from 'primeng/button';
+import {PaginatorModule} from 'primeng/paginator';
+import { FormsModule } from '@angular/forms';
+import {DataViewModule} from 'primeng/dataview';
+import {PanelModule} from 'primeng/panel';
+import {DropdownModule} from 'primeng/dropdown';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {RatingModule} from 'primeng/rating';
+import {RippleModule} from 'primeng/ripple';
 @NgModule({
   declarations: [
     ProductsListComponent,
@@ -22,7 +31,16 @@ import {ButtonModule} from 'primeng/button';
     ProgressSpinnerModule,
     ProgressBarModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule,
+    PaginatorModule,
+    DataViewModule,
+    RatingModule,
+    InputTextModule,
+    DialogModule,
+    DropdownModule,
+    PanelModule,
+    RippleModule
 
   ]
 })
