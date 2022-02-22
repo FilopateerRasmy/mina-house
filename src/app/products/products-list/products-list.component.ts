@@ -13,14 +13,16 @@ export class ProductsListComponent implements OnInit {
 // isLoading = true
   constructor(private productService:ProductsService, private cartService:CartService) { }
   products!: IProduct[];
-
-  ngOnInit(): void {
+  afterFilter:IProduct[] = []
+ngOnInit(): void {
     this.productService.getAllProducts().subscribe(
       {
         next: (result) => {
           // this.isLoading = false
-          this.products = result.products
           console.log(result.products)
+
+          this.products = result.products;
+          this.afterFilter = [...this.products]
         }
       }
     )
@@ -52,10 +54,21 @@ export class ProductsListComponent implements OnInit {
         }
     }
 
+    
 
     cart(product:IProduct){
       console.log(product)
       this.cartService.addToCart(product)
+    }
+    onFilter($event:Event){
+
+        const filter = ($event.target as HTMLInputElement).value;
+        if(filter){
+          const filteredProducts = this.products.map(product => ({...product, name:product.name.toLowerCase()})).filter(product => product.name.includes(filter.toLowerCase()) )
+        this.products = filteredProducts.length ? filteredProducts : this.afterFilter
+        }else{
+          this.products = this.afterFilter
+        }
     }
 }
 
