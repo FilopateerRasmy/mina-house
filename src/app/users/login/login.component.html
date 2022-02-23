@@ -1,1 +1,50 @@
-<p>login works!</p>
+<!-- <p>login works!</p>
+<div class="container">
+    <form class="login-email" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <p
+        class="login-text"
+        style="font-size: 2rem; font-weight: 800; font-style: italic"
+      >
+
+        Login
+      </p>
+      <div class="form-group" >
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          class="form-control"
+          formControlName="email"
+          required
+        />
+        <div *ngIf="getErrors('email') && getField('email')?.touched">
+          <p *ngIf="getErrors('email')?.['required']">
+            please provide a email
+          </p>
+          <p *ngIf="getErrors('email')?.['email']">
+              please provide a valid email
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          class="form-control"
+          formControlName="password"
+          required
+        />
+        <div *ngIf="getErrors('password') && getField('password')?.touched">
+          <p *ngIf="getErrors('password')?.['required']">
+            please enter a password
+          </p>
+        </div>
+    </div>
+      
+      <div class="form-group">
+        <button name="submit" class="btn">Login</button>
+      </div>
+    </form>
+  </div>
+   -->
