@@ -3,6 +3,7 @@
 @import "primeng/resources/themes/lara-light-indigo/theme.css";
 @import "primeng/resources/primeng.min.css";
 @import "primeflex/primeflex.css";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@500&display=swap');
 html,body{
     height: 100%;
 }
@@ -11,6 +12,12 @@ html,body{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+body{
+    font-family: 'Bebas Neue', cursive;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto', sans-serif;
 }
 
 a{
