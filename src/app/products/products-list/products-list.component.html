@@ -1,4 +1,4 @@
-<div class="absolute top-50 left-50 translate-x-50 translate-y-50" *ngIf="isLoading">
+<!-- <div class="absolute top-50 left-50 translate-x-50 translate-y-50" *ngIf="isLoading">
 
   <p-progressSpinner [style]="{width: '100px', height: '80px'}" styleClass="custom-spinner " strokeWidth="4"
     fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
@@ -65,4 +65,6 @@
       </div>
     </ng-template>
   </p-dataView>
-</ng-container>
+</ng-container> -->
+
+<app-display-products [products]="listOfProducts"></app-display-products>

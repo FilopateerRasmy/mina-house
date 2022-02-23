@@ -1,9 +1,12 @@
 <ng-container *ngIf="product">
   <div class="scalein animation-duration-300 font-bold ">
-    <div class="card flex m-3">
+    <div class="card grid m-3">
 
-      <img class="border-round" [src]="product.image" alt="{{product.name}}">
-      <div class="ml-3">
+     <div class=" md:col-4">
+      <img class="border-round w-full"  [src]="product.image" alt="{{product.name}}">
+     </div>
+
+      <div class=" md:col-8">
         <h2 class="mb-3" >{{product.name}}</h2>
         <p>{{product.description}}</p>
         <p>Price: {{product.price}} LE</p>

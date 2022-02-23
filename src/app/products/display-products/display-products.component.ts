@@ -1,33 +1,22 @@
 import { CartService } from 'src/app/services/cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from 'src/app/shared/products';
 
 @Component({
-  selector: 'app-products-categories',
-  templateUrl: './products-categories.component.html',
-  styleUrls: ['./products-categories.component.scss']
+  selector: 'app-display-products',
+  templateUrl: './display-products.component.html',
+  styleUrls: ['./display-products.component.scss']
 })
-export class ProductsCategoriesComponent implements OnInit {
+export class DisplayProductsComponent implements OnInit {
+
   isLoading = true  
   constructor(private productService:ProductsService, private cartService:CartService, private route:ActivatedRoute) { }
-  products!: IProduct[];
+ @Input() products: IProduct[] = [];
   beforeFilter:IProduct[] = []
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params:ParamMap)=>{
-      const id = params.get('id');
-      if(id){
-        this.productService.getProductsWithCategories(id).subscribe({
-          next: (result)=>{ 
-            this.isLoading =false
-            this.products = result.products;
-            this.beforeFilter = [...this.products];
-          }
-        })
-
-      }
-    })
+  
   }
   sortOptions =  [
     {label: 'Price High to Low', value: '!price'},

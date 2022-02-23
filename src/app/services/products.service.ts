@@ -10,14 +10,26 @@ export class ProductsService {
 
   constructor(private http:HttpClient) { }
 
+  
 getProductsWithCategories(id:string):Observable<{products:IProduct[]; numOfPages:number}>{
   return this.http.get<{products:IProduct[]; numOfPages:number}>(`http://localhost:3000/api/v1/products?category=${id}`)
 }
 
-
 getAllProducts():Observable<{products:IProduct[]; numOfPages:number}>{
   return this.http.get<{products:IProduct[]; numOfPages:number}>(`http://localhost:3000/api/v1/products`)
 }
+
+
+
+
+
+
+
+
+
+
+
+
 getSingleProduct(id:string){
   return this.http.get<{product:IProduct}>(`http://localhost:3000/api/v1/products/${id}`)
 }
