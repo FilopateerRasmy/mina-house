@@ -9,20 +9,18 @@ import { IProduct } from 'src/app/shared/products';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-// products!: IProduct[]
-// isLoading = true
+  isLoading = true  
   constructor(private productService:ProductsService, private cartService:CartService) { }
   products!: IProduct[];
-  afterFilter:IProduct[] = []
+  beforeFilter:IProduct[] = []
 ngOnInit(): void {
     this.productService.getAllProducts().subscribe(
       {
         next: (result) => {
-          // this.isLoading = false
+          this.isLoading = false
           console.log(result.products)
-
           this.products = result.products;
-          this.afterFilter = [...this.products]
+          this.beforeFilter = [...this.products];
         }
       }
     )
@@ -65,9 +63,9 @@ ngOnInit(): void {
         const filter = ($event.target as HTMLInputElement).value;
         if(filter){
           const filteredProducts = this.products.map(product => ({...product, name:product.name.toLowerCase()})).filter(product => product.name.includes(filter.toLowerCase()) )
-        this.products = filteredProducts.length ? filteredProducts : this.afterFilter
+        this.products = filteredProducts.length ? filteredProducts : this.beforeFilter
         }else{
-          this.products = this.afterFilter
+          this.products = this.beforeFilter
         }
     }
 }

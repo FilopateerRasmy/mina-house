@@ -5,6 +5,6 @@ export interface IProduct {
     price:number,
     category:string,
     description:string,
-    image:string
+    image:string[]
     _id:string
 }
