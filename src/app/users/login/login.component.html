@@ -1,22 +1,18 @@
-<!-- <p>login works!</p>
-<div class="container">
-    <form class="login-email" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+<div class="flex justify-content-center w-full">
+    <form class="login-email fadeindown animation-duration-1000" [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <p
-        class="login-text"
+        class="login-text mt-4"
         style="font-size: 2rem; font-weight: 800; font-style: italic"
       >
 
         Login
       </p>
-      <div class="form-group" >
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          class="form-control"
-          formControlName="email"
-          required
-        />
+      <div class="form-group my-4" >
+        <span class="p-float-label">
+          <input id="float-input"  type="email" pInputText formControlName="email"> 
+          <label for="float-input">example@gmail.com</label>
+      </span>
         <div *ngIf="getErrors('email') && getField('email')?.touched">
           <p *ngIf="getErrors('email')?.['required']">
             please provide a email
@@ -26,15 +22,8 @@
           </p>
         </div>
       </div>
-      <div class="form-group">
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          class="form-control"
-          formControlName="password"
-          required
-        />
+      <div class="form-group my-4">
+        <p-password formControlName="password" placeholder="Password" [toggleMask]="true"></p-password>
         <div *ngIf="getErrors('password') && getField('password')?.touched">
           <p *ngIf="getErrors('password')?.['required']">
             please enter a password
@@ -43,8 +32,8 @@
     </div>
       
       <div class="form-group">
-        <button name="submit" class="btn">Login</button>
+        <button pButton pRipple type="submit"  [disabled]="loginForm.invalid" label="Login" class="p-button-rounded "></button>
       </div>
     </form>
   </div>
-   -->
+  

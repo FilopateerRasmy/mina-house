@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb:FormBuilder, private auth:AuthService) { }
 
-  userToken :string = ''
-  userDetails:UserData ={name:'',userId:'',role:''}
+  // userToken :string = ''
+  // userDetails:UserData ={name:'',userId:'',role:''}
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -26,16 +28,12 @@ export class LoginComponent implements OnInit {
   }
   onLogin()
   {
-    this.loginService.login(this.loginForm.value).subscribe({
-      next:(userData:UserLogin)=>{
-        // console.log(userData)
-        console.log(Object.values(userData)[0])
-        this.userDetails =Object.values(userData)[0]
-        this.userToken = Object.values(userData)[1]
-        
-        // console.log(this.userDetails.name  )
-        // console.log(this.userToken)
-        localStorage.setItem(`${this.userDetails.userId}`, this.userToken)
+    this.auth.login(this.loginForm.value).subscribe({
+      next:(userData)=>{
+
+        console.log(userData)
+ 
+     
 
         },
       error:(err:any)=> {console.log(err.error.msg)}
@@ -43,7 +41,7 @@ export class LoginComponent implements OnInit {
     })
   }
   onLogout(){
-    localStorage.removeItem(`${this.userDetails.userId}`)
+   
   }
 
 }

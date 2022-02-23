@@ -3,7 +3,7 @@ interface registerData{
     email:string;
     password:string;
     address:{
-        state:string;
+        street:string;
         city:string;
     }
     phone:number;
