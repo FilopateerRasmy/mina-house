@@ -18,6 +18,11 @@ import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
 import {RippleModule} from 'primeng/ripple';
+import {GalleriaModule} from 'primeng/galleria';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+
+
 @NgModule({
   declarations: [
     ProductsListComponent,
@@ -40,8 +45,10 @@ import {RippleModule} from 'primeng/ripple';
     DialogModule,
     DropdownModule,
     PanelModule,
-    RippleModule
-
+    RippleModule,
+    GalleriaModule,
+    MessagesModule,
+    MessageModule
   ]
 })
 export class ProductsModule { }

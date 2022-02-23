@@ -1,9 +1,32 @@
-<div class="shadow-2 h-fill m-3 flex justify-content-around m-6 p-6" *ngIf="product" >
-        
-        <img class="" [src]="product.image" alt="{{product.name}}">
-        <div class="text-center">
-                <h2>{{product.name}}</h2>
-                <p>{{product.description}}</p>
-        </div>
-        
-</div>
+<ng-container *ngIf="product">
+  <div class="scalein animation-duration-300 font-bold ">
+    <div class="card flex m-3">
+
+      <img class="border-round" [src]="product.image" alt="{{product.name}}">
+      <div class="ml-3">
+        <h2 class="mb-3" >{{product.name}}</h2>
+        <p>{{product.description}}</p>
+        <p>Price: {{product.price}} LE</p>
+        <p *ngIf="product.countInStock==0" class=" p-1 font-bold">OUTOFSTOCK
+        </p>
+        <!--TODO <p-button (onClick)="notify()"> Notify me
+          </p-button> 
+           <p-button (onClick)="wishlist()"> Add To Wishlist
+          </p-button> 
+        -->
+        <p *ngIf="product.countInStock!==0" class="p-1 font-bold">INSTOCK</p>
+        <p-button [disabled]="product.countInStock === 0" (onClick)="cart(product)"> Add to cart
+        </p-button>
+      </div>
+
+    </div>
+  </div>
+</ng-container>
+
+<!-- <p-galleria [value]="product.image">
+  <ng-template pTemplate="item" let-item>
+      <img [src]="item.previewImageSrc" [alt]="item.alt" />
+  </ng-template>
+</p-galleria> 
+el value 3ayza array of any 
+-->
