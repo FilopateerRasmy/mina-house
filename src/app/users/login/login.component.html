@@ -1,39 +1,61 @@
-
-<div class="flex justify-content-center w-full">
-    <form class="login-email fadeindown animation-duration-1000" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <p
-        class="login-text mt-4"
-        style="font-size: 2rem; font-weight: 800; font-style: italic"
-      >
-
-        Login
-      </p>
-      <div class="form-group my-4" >
-        <span class="p-float-label">
-          <input id="float-input"  type="email" pInputText formControlName="email"> 
-          <label for="float-input">example@gmail.com</label>
-      </span>
-        <div *ngIf="getErrors('email') && getField('email')?.touched">
-          <p *ngIf="getErrors('email')?.['required']">
-            please provide a email
-          </p>
-          <p *ngIf="getErrors('email')?.['email']">
-              please provide a valid email
-          </p>
-        </div>
-      </div>
-      <div class="form-group my-4">
-        <p-password formControlName="password" placeholder="Password" [toggleMask]="true"></p-password>
-        <div *ngIf="getErrors('password') && getField('password')?.touched">
-          <p *ngIf="getErrors('password')?.['required']">
-            please enter a password
-          </p>
-        </div>
-    </div>
-      
-      <div class="form-group">
-        <button pButton pRipple type="submit"  [disabled]="loginForm.invalid" label="Login" class="p-button-rounded "></button>
-      </div>
-    </form>
+<div class="grid w-full">
+  <div class="lg:col-8 fadeindown animation-duration-1000">
+    <img
+      class="w-full"
+      src="https://images.pexels.com/photos/2878736/pexels-photo-2878736.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+      alt=""
+    />
   </div>
-  
+  <form
+    class="login-email lg:col-4 fadeinup animation-duration-1000 mt-5"
+    [formGroup]="loginForm"
+    (ngSubmit)="onLogin()"
+  >
+    <p
+      class="login-text mt-4"
+      style="font-size: 3rem; font-weight: 500; font-style: italic"
+    >
+      Login
+    </p>
+    <div class="form-group my-4">
+      <span class="p-float-label">
+        <input
+          id="float-input"
+          type="email"
+          pInputText
+          formControlName="email"
+        />
+        <label for="float-input">example@gmail.com</label>
+      </span>
+      <div *ngIf="getErrors('email') && getField('email')?.touched">
+        <p *ngIf="getErrors('email')?.['required']">please provide a email</p>
+        <p *ngIf="getErrors('email')?.['email']">
+          please provide a valid email
+        </p>
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <p-password
+        formControlName="password"
+        placeholder="Password"
+        [toggleMask]="true"
+      ></p-password>
+      <div *ngIf="getErrors('password') && getField('password')?.touched">
+        <p *ngIf="getErrors('password')?.['required']">
+          please enter a password
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button
+        pButton
+        pRipple
+        type="submit"
+        [disabled]="loginForm.invalid"
+        label="Login"
+        class="p-button-rounded pl-3"
+      ></button>
+    </div>
+  </form>
+</div>

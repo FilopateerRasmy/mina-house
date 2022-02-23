@@ -1,22 +1,28 @@
-
-  
-<div class="grid fadeinup animation-duration-1000">
-  <!-- <div class="md:col-6  ">
-    <img class="w-100" src="https://images.pexels.com/photos/10665344/pexels-photo-10665344.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
-  </div> -->
-  <form class=" md:col-6" (ngSubmit)="onRegister()" [formGroup]="registerForm">
+<div class="grid w-full">
+  <div class="lg:col-8 fadeindown animation-duration-1000">
+    <img
+      class="w-full"
+      style="height: 540px"
+      src="https://images.pexels.com/photos/1693027/pexels-photo-1693027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+      alt=""
+    />
+  </div>
+  <form
+    class="lg:col-4 fadeinup animation-duration-1000"
+    (ngSubmit)="onRegister()"
+    [formGroup]="registerForm"
+  >
     <p
-      class="login-text m-3 text-center w-7"
-      style="font-size: 2rem; font-weight: 800; font-style: italic"
+      class="login-text mb-3"
+      style="font-size: 3rem; font-weight: 300; font-style: italic"
     >
       Sign Up
     </p>
     <div class="form-group w-20rem mb-4">
-
       <span class="p-float-label">
-        <input id="float-input" type="text" pInputText formControlName="name"> 
+        <input id="float-input" type="text" pInputText formControlName="name" />
         <label for="float-input">Username</label>
-    </span>
+      </span>
       <div *ngIf="getErrors('name') && getField('name')?.touched">
         <p *ngIf="getErrors('name')?.['required']">
           please provide a user name
@@ -30,11 +36,15 @@
       </div>
     </div>
     <div class="form-group w-20rem mb-4">
- 
       <span class="p-float-label">
-        <input id="float-input"  type="email" pInputText formControlName="email"> 
+        <input
+          id="float-input"
+          type="email"
+          pInputText
+          formControlName="email"
+        />
         <label for="float-input">Email</label>
-    </span>
+      </span>
       <div *ngIf="getErrors('email') && getField('email')?.touched">
         <p *ngIf="getErrors('email')?.['required']">please provide a email</p>
         <p *ngIf="getErrors('email')?.['email']">
@@ -57,32 +67,47 @@
     <div formGroupName="address">
       <div class="form-group w-20rem mb-4">
         <span class="p-float-label">
-          <input id="float-input"  type="text" pInputText formControlName="street"> 
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="street"
+          />
           <label for="float-input">Street</label>
-      </span>
+        </span>
         <div *ngIf="getErrors('street') && getField('street')?.touched">
-          <p *ngIf="getErrors('street')?.['required']">please provide a street</p>
+          <p *ngIf="getErrors('street')?.['required']">
+            please provide a street
+          </p>
         </div>
-        
       </div>
 
       <div class="form-group w-20rem mb-4">
         <span class="p-float-label">
-          <input id="float-input"  type="text" pInputText formControlName="city"> 
+          <input
+            id="float-input"
+            type="text"
+            pInputText
+            formControlName="city"
+          />
           <label for="float-input">City</label>
-      </span>
+        </span>
         <div *ngIf="getErrors('city') && getField('city')?.touched">
           <p *ngIf="getErrors('city')?.['required']">please provide a city</p>
         </div>
-        
       </div>
     </div>
 
     <div class="form-group w-20rem mb-4">
       <span class="p-float-label w-full">
-        <input id="float-input"  type="text" pInputText formControlName="phone"> 
+        <input
+          id="float-input"
+          type="text"
+          pInputText
+          formControlName="phone"
+        />
         <label for="float-input">Phone</label>
-    </span>
+      </span>
       <div *ngIf="getErrors('phone') && getField('phone')?.touched">
         <p *ngIf="getErrors('phone')?.['required']">please provide a phone</p>
         <p *ngIf="getErrors('phone')?.['minlength']">
@@ -95,7 +120,14 @@
     </div>
 
     <div class="form-group w-20rem">
-      <button pButton pRipple type="submit" [disabled]="registerForm.invalid" label="Register" class="p-button-rounded"></button>
+      <button
+        pButton
+        pRipple
+        type="submit"
+        [disabled]="registerForm.invalid"
+        label="Register"
+        class="p-button-rounded justify-content-center"
+      ></button>
     </div>
   </form>
 </div>
