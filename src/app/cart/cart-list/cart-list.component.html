@@ -1,0 +1,21 @@
+<h2 class=" text-center mt-8" mb-3 *ngIf="cartList.length==0">Your shopping cart is empty.</h2>
+<ng-container *ngIf="cartList?.length">
+  <p-dataView #dv [value]=" cartList" layout="list">
+      <ng-template let-product pTemplate="listItem">
+        <div class="col-12">
+          <div class="product-list-item ">
+            <img [src]="product.image" [alt]="product.name" class="list-img "
+              [routerLink]="['/products',product._id]" />
+            <div class="product-list-detail">
+              <div class="product-name">{{product.name}}</div>
+              <div class="product-description">{{product.description.slice(0,30)}}</div>
+            </div>
+            <div class="product-list-action">
+              <span class="product-price">${{product.price}}</span>
+              <button pButton type="button" label="Remove" class="p-button-danger" (click)="remove(product)"></button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+  </p-dataView>
+</ng-container>
