@@ -1,3 +1,4 @@
+import { IProduct } from 'src/app/shared/products';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -7,10 +8,19 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-list.component.scss']
 })
 export class CartListComponent implements OnInit {
+  cartList:IProduct[] = []
 
-  constructor(private cart: CartService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.cartList= this.cartService.cart;
+    console.log(this.cartList);  
   }
 
+remove(product:IProduct){
+  console.log(product);
+  // let itemIndex= this.cartList.findIndex(prod=>prod==product);
+  let itemIndex= this.cartList.indexOf(product);
+  this.cartList.splice(itemIndex,1);
+}
 }
