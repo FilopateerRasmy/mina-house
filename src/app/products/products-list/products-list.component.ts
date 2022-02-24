@@ -13,8 +13,7 @@ export class ProductsListComponent implements OnInit {
   listOfProducts:IProduct[] = []
   isLoading = true  
   constructor(private productService:ProductsService, private route: ActivatedRoute) { }
-  products!: IProduct[];
-  beforeFilter:IProduct[] = []
+
 ngOnInit(): void {
 
   this.route.paramMap.subscribe( (params:ParamMap) => {

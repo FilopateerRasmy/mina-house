@@ -20,6 +20,7 @@ import { PasswordModule } from 'primeng/password';
 import {CarouselModule} from 'primeng/carousel';
 import {BadgeModule} from 'primeng/badge';
 import {SidebarModule} from 'primeng/sidebar';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [],
   imports: [
@@ -44,7 +45,8 @@ import {SidebarModule} from 'primeng/sidebar';
     PasswordModule,
     CarouselModule,
     BadgeModule,
-    SidebarModule
+    SidebarModule,
+    ToastModule
   ]
 })
 export class PrimengModule { }

@@ -1,18 +1,18 @@
 import { CartService } from 'src/app/services/cart.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from 'src/app/shared/products';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-display-products',
   templateUrl: './display-products.component.html',
-  styleUrls: ['./display-products.component.scss']
+  styleUrls: ['./display-products.component.scss'],
+  providers:[MessageService]
 })
 export class DisplayProductsComponent implements OnInit {
-
+  productName = '';
   isLoading = true  
-  constructor(private productService:ProductsService, private cartService:CartService, private route:ActivatedRoute) { }
+  constructor( private cartService:CartService, private messageService:MessageService) { }
  @Input() products: IProduct[] = [];
   beforeFilter:IProduct[] = []
   ngOnInit(): void {
@@ -48,6 +48,8 @@ export class DisplayProductsComponent implements OnInit {
   cart(product:IProduct){
     console.log(product)
     this.cartService.addToCart(product)
+    this.productName = product.name + ' has been added to cart';
+    this.messageService.add({severity:'success', summary: 'Added to cart', detail: product.name});
   }
   onFilter($event:Event){
 

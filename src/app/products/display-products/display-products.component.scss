@@ -152,3 +152,14 @@
     object-fit: cover;
   }
   
+  :host ::ng-deep {
+    .p-toast-message-custom {
+        background-color: #E1CFE7;
+        border: solid #8A427A;
+        border-width: 0 0 0 6px;
+        color: #2c1e30;
+        .p-toast-icon-close {
+            color: #2c1e30;
+        }
+    }
+}
