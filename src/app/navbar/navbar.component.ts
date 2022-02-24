@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {  Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   cartProducts!: string;
   isLogin = false
   sub!: Subscription
-  constructor(private cartService: CartService, private auth: AuthService) {
+  constructor(private cartService: CartService, private auth: AuthService, private router:Router) {
     this.auth.checkUser()
   }
 
@@ -36,5 +37,6 @@ this.auth.isAuthanticated.subscribe((userData) =>{
   }
   logout() {
     this.auth.logout()
+    this.router.navigateByUrl('/')
   }
 }

@@ -22,5 +22,6 @@ remove(product:IProduct){
   // let itemIndex= this.cartList.findIndex(prod=>prod==product);
   let itemIndex= this.cartList.indexOf(product);
   this.cartList.splice(itemIndex,1);
+  this.cartService.cartWatcher.next(this.cartList)
 }
 }

@@ -8,7 +8,7 @@ import { User } from '../shared/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private  userData = {
+    userData = {
     token:'',
     name:'',
     isLogin:false
