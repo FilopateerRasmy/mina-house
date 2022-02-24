@@ -11,7 +11,9 @@ import { IProduct } from 'src/app/shared/products';
 })
 export class ProductsListComponent implements OnInit {
   listOfProducts:IProduct[] = []
-  isLoading = true  
+  isLoading = true  ;
+  msg='';
+  noData = false;
   constructor(private productService:ProductsService, private route: ActivatedRoute) { }
 
 ngOnInit(): void {
@@ -21,7 +23,13 @@ ngOnInit(): void {
     if(id){
       this.productService.getProductsWithCategories(id).subscribe({
         next: (result)=>{
-          this.listOfProducts = result.products
+          this.isLoading = false;
+          this.noData = result.products.length ? false : true
+          this.listOfProducts = result.products;
+        },
+        error: error => {
+          this.isLoading = false;
+          this.msg = error.message
         }
       })
     }else{

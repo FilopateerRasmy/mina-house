@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,10 +10,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private auth:AuthService) { }
+  constructor(private fb:FormBuilder, private auth:AuthService, private router:Router) { }
 
-  // userToken :string = ''
-  // userDetails:UserData ={name:'',userId:'',role:''}
+  msg = ''
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -29,14 +29,15 @@ export class LoginComponent implements OnInit {
   onLogin()
   {
     this.auth.login(this.loginForm.value).subscribe({
-      next:(userData)=>{
+      next:(res)=>{
 
-        console.log(userData)
+        this.auth.saveUser(res.token, res.user.name);
+        this.router.navigateByUrl('/');
  
      
 
         },
-      error:(err:any)=> {console.log(err.error.msg)}
+      error:(err:any)=> {this.msg = err.error.msg}
       
     })
   }

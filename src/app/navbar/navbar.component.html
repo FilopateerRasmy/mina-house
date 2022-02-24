@@ -7,14 +7,26 @@
             <a routerLink="/"> Home</a>
         </li>
         <li class="mr-1 p-2 hidden lg:block transition-colors transition-duration-500 hover:surface-300 border-round"
-            routerLinkActive="active" ><a routerLink="/products"> Products</a>
+            routerLinkActive="active"><a routerLink="/products"> Products</a>
         </li>
-        <li class="mr-1 p-2 hidden lg:block transition-colors transition-duration-500 hover:surface-300 border-round"
-            routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/users/register"> Sign
-                up</a></li>
-        <li class="mr-1 p-2 hidden lg:block transition-colors transition-duration-500 hover:surface-300 border-round"
-            routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/users">Login</a></li>
-        <li class="p-2 hidden lg:block" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <ng-container *ngIf="!isLogin ">
+            <li class="mr-1 p-2 hidden lg:block transition-colors transition-duration-500 hover:surface-300 border-round"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/users/register"> Sign
+                    up</a></li>
+            <li class="mr-1 p-2 hidden lg:block transition-colors transition-duration-500 hover:surface-300 border-round"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/users">Login</a></li>
+        </ng-container>
+        <ng-container *ngIf="isLogin">
+            <li class="mr-1 p-2 hidden lg:block transition-colors cursor-pointer transition-duration-500 hover:surface-300 border-round"
+                (click)="logout()"><a>Logout</a></li>
+            <li
+                class="mr-1 p-2 hidden lg:block transition-colors cursor-pointer transition-duration-500 hover:surface-300 border-round">
+                <a>Welcome {{name | titlecase}}</a></li>
+        </ng-container>
+
+
+
+        <li class="p-2 hidden lg:block">
 
             <a routerLink="/cart"> <i class="pi pi-shopping-cart mr-4" pBadge style="font-size: 1.3rem"
                     [value]="cartProducts  || '0'"></i>

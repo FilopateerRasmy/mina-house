@@ -11,7 +11,7 @@ import { MessageService } from 'primeng/api';
 })
 export class DisplayProductsComponent implements OnInit {
   productName = '';
-  isLoading = true  
+  
   constructor( private cartService:CartService, private messageService:MessageService) { }
  @Input() products: IProduct[] = [];
   beforeFilter:IProduct[] = []
@@ -27,7 +27,7 @@ export class DisplayProductsComponent implements OnInit {
 
   sortField!: string;
 
-  // constructor(private productService: ProductService) { }
+
 
  
   onSortChange(event:any) {

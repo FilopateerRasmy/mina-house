@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor(private fb:FormBuilder, private auth:AuthService) { }
+msg = ''
+  constructor(private fb:FormBuilder, private auth:AuthService, private router:Router) { }
 
   registerForm = this.fb.group({
     name: [
@@ -37,10 +38,11 @@ export class RegisterComponent implements OnInit {
   onRegister(){
     this.auth.register(this.registerForm.value).subscribe({
       next:(res)=>{
-        console.log(res)
+        this.auth.saveUser(res.token, res.user.name);
+        this.router.navigateByUrl('/');
       },
       error:(err)=>{
-        console.log(err)
+        this.msg = err.error.msg
       }
 
     })

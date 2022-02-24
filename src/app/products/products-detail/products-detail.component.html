@@ -5,18 +5,14 @@
      <div class=" md:col-4">
       <img class="border-round w-full"  [src]="product.image" alt="{{product.name}}">
      </div>
-
+     <p-toast position="top-right"></p-toast>
       <div class=" md:col-8">
         <h2 class="mb-3" >{{product.name}}</h2>
         <p>{{product.description}}</p>
         <p>Price: {{product.price}} LE</p>
         <p *ngIf="product.countInStock==0" class=" p-1 font-bold">OUTOFSTOCK
         </p>
-        <!--TODO <p-button (onClick)="notify()"> Notify me
-          </p-button> 
-           <p-button (onClick)="wishlist()"> Add To Wishlist
-          </p-button> 
-        -->
+   
         <p *ngIf="product.countInStock!==0" class="p-1 font-bold">INSTOCK</p>
         <p-button [disabled]="product.countInStock === 0" (onClick)="cart(product)"> Add to cart
         </p-button>
@@ -25,11 +21,6 @@
     </div>
   </div>
 </ng-container>
+ 
+<h2 class="text-center mt-8" *ngIf="msg">{{msg}}</h2>
 
-<!-- <p-galleria [value]="product.image">
-  <ng-template pTemplate="item" let-item>
-      <img [src]="item.previewImageSrc" [alt]="item.alt" />
-  </ng-template>
-</p-galleria> 
-el value 3ayza array of any 
--->
