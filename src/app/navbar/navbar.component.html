@@ -1,6 +1,9 @@
 <nav
-    class="shadow-1 flex w-full justify-content-between align-items-center py-4 nav px-3 fadein animation-duration-1000   ">
+    class="shadow-1 flex w-full  justify-content-between align-items-center py-4 nav px-3 fadein animation-duration-1000   ">
     <h2>Mina-House</h2>
+
+ <input type="text" pInputText (input)="onSearch($event)">
+
     <ul class="flex list-none">
         <li class="mr-1 p-2 hidden lg:block transition-colors transition-duration-500 hover:surface-300 border-round"
             routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
@@ -53,3 +56,6 @@
         </li>
     </ul>
 </p-sidebar>
+<div *ngIf="search">
+    {{search}}
+</div>

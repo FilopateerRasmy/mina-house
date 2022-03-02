@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
+import { ProductsService } from '../services/products.service';
 
 
 @Component({
@@ -12,20 +13,21 @@ import { CartService } from '../services/cart.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-   name = ''
+  name = ''
   display = false;
   cartProducts!: string;
   isLogin = false
   sub!: Subscription
-  constructor(private cartService: CartService, private auth: AuthService, private router:Router) {
+  search = ''
+  constructor(private cartService: CartService, private auth: AuthService, private router: Router, private productsSearch:ProductsService) {
     this.auth.checkUser()
   }
 
   ngOnInit(): void {
-this.auth.isAuthanticated.subscribe((userData) =>{
-  this.name = userData.name;
-  this.isLogin = userData.isLogin
-})
+    this.auth.isAuthanticated.subscribe((userData) => {
+      this.name = userData.name;
+      this.isLogin = userData.isLogin
+    })
     this.sub = this.cartService.cartListener.subscribe(products => {
       this.cartProducts = products.length.toString()
       console.log(products.length.toString())
@@ -38,5 +40,13 @@ this.auth.isAuthanticated.subscribe((userData) =>{
   logout() {
     this.auth.logout()
     this.router.navigateByUrl('/')
+  }
+  onSearch($event:Event){
+    const value = ($event.target as HTMLInputElement).value;
+    this.productsSearch.getAllProductsWithSearch(value).subscribe({
+      next: res => {
+        console.log(res)
+      }
+    })
   }
 }
