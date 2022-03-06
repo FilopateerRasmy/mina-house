@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
@@ -11,16 +11,17 @@ import { ProductsService } from '../services/products.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   name = ''
   display = false;
-  cartProducts!: string;
+  cartProducts= this.cartService.cartListener;
   isLogin = false
   sub!: Subscription
   search = ''
   constructor(private cartService: CartService, private auth: AuthService, private router: Router, private productsSearch:ProductsService) {
-    this.auth.checkUser()
+    this.auth.checkUser();
   }
 
   ngOnInit(): void {
@@ -28,25 +29,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.name = userData.name;
       this.isLogin = userData.isLogin
     })
-    this.sub = this.cartService.cartListener.subscribe(products => {
-      this.cartProducts = products.length.toString()
-      console.log(products.length.toString())
-    })
+    // this.sub = this.cartService.cartListener.subscribe(products => {
+    //   this.cartProducts = products.length.toString()
+    //   console.log(products.length.toString())
+    // })
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    // this.sub.unsubscribe()
   }
   logout() {
     this.auth.logout()
     this.router.navigateByUrl('/')
   }
-  onSearch($event:Event){
-    const value = ($event.target as HTMLInputElement).value;
-    this.productsSearch.getAllProductsWithSearch(value).subscribe({
-      next: res => {
-        console.log(res)
-      }
-    })
-  }
+
 }

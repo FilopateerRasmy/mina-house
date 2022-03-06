@@ -58,7 +58,7 @@ export class DisplayProductsComponent implements OnInit, OnChanges {
 
       const filter = ($event.target as HTMLInputElement).value;
       if(filter){
-        const filteredProducts = this.products.map(product => ({...product, name:product.name.toLowerCase()})).filter(product => product.name.includes(filter.toLowerCase()) )
+        const filteredProducts = this.products.filter(product => product.name.toLocaleLowerCase().includes(filter.toLowerCase()) )
       this.products = filteredProducts.length ? filteredProducts : this.beforeFilter;
       console.log(this.beforeFilter)
       }else{

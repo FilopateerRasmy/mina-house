@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from 'src/app/shared/products';
 
@@ -11,7 +10,7 @@ import { IProduct } from 'src/app/shared/products';
 })
 export class ProductsListComponent implements OnInit {
   listOfProducts:IProduct[] = []
-  isLoading = true  ;
+  isLoading = true;
   msg='';
   noData = false;
   constructor(private productService:ProductsService, private route: ActivatedRoute) { }

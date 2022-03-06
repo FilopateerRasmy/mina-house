@@ -37,8 +37,8 @@ export class AuthService {
     this.userData.isLogin = true;
     this.userData.token = token;
     this.userData.name = name;
-    this.isAuthanticated.next(this.userData)
-    localStorage.setItem('user', JSON.stringify({name,token}))
+    this.isAuthanticated.next(this.userData);
+    localStorage.setItem('user', JSON.stringify({name,token}));
   }
 
     checkUser(){

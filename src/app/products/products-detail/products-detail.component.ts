@@ -9,7 +9,8 @@ import { MessageService } from 'primeng/api';
   selector: 'app-products-detail',
   templateUrl: './products-detail.component.html',
   styleUrls: ['./products-detail.component.scss'],
-  providers:[MessageService]
+  providers:[MessageService],
+  
 })
 export class ProductsDetailComponent implements OnInit {
   product!:IProduct;
