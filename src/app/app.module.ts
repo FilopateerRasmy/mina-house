@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CartModule } from './cart/cart.module';
 import { HttpClientModule } from '@angular/common/http'
 import { PrimengModule } from './primeng/primeng.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { PrimengModule } from './primeng/primeng.module';
     AppRoutingModule,
 
     BrowserAnimationsModule,
-
+    DashboardModule,
     CartModule,
     HttpClientModule,
     PrimengModule

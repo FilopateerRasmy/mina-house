@@ -1,0 +1,69 @@
+<div class=" grid mb-4 ml-2">
+    <div class=" col-12">
+        <h1 class=" m-0 pt-1  pl-5">Account Overview</h1>
+       
+            <p-divider class="m-0"></p-divider>
+    </div>
+    
+    
+    <p-card  class="ml-3 col-10 shadow-6"  [style]="{'width': '10'}">
+        <div class="grid  ">
+            <h3 class="mt-0 col-10 ">Account Details</h3>
+            <!-- <button pButton label=" Edit" pRipple type="button" icon="pi pi-pencil" class="p-button-icon-right p-button-warning "></button> -->
+            <a routerLink="/customer/account/edit" ><p-button label="Edit"  icon="pi pi-pencil" iconPos="right"></p-button></a>
+
+        </div>
+        <p-divider class="m-0"></p-divider>
+       
+        <div class="grid p-fluid">
+            <div class="col-12 ">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="text" readonly value= {{name}} pInputText placeholder="User Name">         
+                </div>
+            </div>
+        </div>
+
+        <div class="grid p-fluid">
+            <div class="col-12 ">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+                    <input type="text"  readonly value= {{email}} pInputText placeholder="E-mail">         
+                </div>
+            </div>
+        </div>
+    
+        <h3 >Shipping Address</h3>
+        <p-divider class="m-0"></p-divider>
+   
+
+        <div class="grid p-fluid">
+            <div class="col-12 ">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-home"></i></span>
+                    <input type="text" pInputText readonly value= {{street}} placeholder="Address">         
+                </div>
+            </div>
+        </div>
+
+        <div class="grid p-fluid">
+            <div class="col-12 ">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-map-marker"></i></span>
+                    <input type="text" pInputText readonly value= {{city}} placeholder="state">         
+                </div>
+            </div>
+        </div>
+
+        <div class="grid p-fluid">
+            <div class="col-12 ">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+                    <input type="text" pInputText readonly
+                    value= {{phone}} placeholder="Phone Number">         
+                </div>
+            </div>
+        </div>
+    </p-card>
+    
+</div>

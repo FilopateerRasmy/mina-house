@@ -1,0 +1,51 @@
+
+
+<section class="grid p-4 surface-200">
+    <div class=" col-12 hidden  sm:col-3  mr-3 sm:block surface-0 p-3">
+        <div class="grid mt-3">
+
+            <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+             routerLink="account/overview" class="col-12 cursor-pointer selection">
+                <i class="pi pi-user " style="font-size: 1.2rem"></i>
+                <p class="inline ml-3">Overview</p>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            routerLink="wishlist" class="col-12 cursor-pointer selection">
+                <i class="pi pi-heart" style="font-size: 1.2rem"></i>
+                <p class="inline ml-3">Wishlist</p>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+             routerLink="account/edit"class="col-12 cursor-pointer selection">
+                <i class="pi pi-info-circle " style="font-size: 1.2rem"></i>
+                <p class="inline ml-3">Details</p>
+            </a>
+
+            <!-- <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            routerLink="address/overview"class="col-12 cursor-pointer selection">
+                <i class="pi pi-home" style="font-size: 1.2rem"></i>
+                <p class="inline ml-3">Address</p>
+            </a> -->
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            routerLink="new-password" class="col-12 flex md:block cursor-pointer selection ">
+                <i class="pi pi-lock  align-self-center " style="font-size: 1.2rem"></i>
+                <p class="inline ml-3 ">Change Password</p>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            routerLink="/" class="col-12 flex md:block cursor-pointer selection ">
+                <i class="pi pi-sign-out
+                align-self-center " style="font-size: 1.2rem"></i>
+                <p class="inline ml-3 ">Logout</p>
+            </a>
+
+        </div>
+
+    </div>
+    <div class="col-12  sm:col-8 surface-0">
+        <router-outlet></router-outlet>
+    </div>
+
+</section>
