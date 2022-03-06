@@ -37,7 +37,7 @@ getUserID(){
   console.log(this.userToken)
   const  tokenInfo = this.getDecodedAccessToken(  this.userToken ); // decode token
   this.userID = tokenInfo.userId
-  console.log(this.userID)
+  // console.log(this.userID)
   // return this.userID
 }
 accountOverview(){
@@ -45,9 +45,11 @@ accountOverview(){
   this.dashService.getUser(this.userID).subscribe({
     next:(res)=>{
 
-     console.log(res.user)
+    //  console.log(res.user)
       this.street = res.user.address.street
       this.city = res.user.address.city
+      // we add the += as the 0 is not included so we intialize the 
+      // the phone variable with 0 and then add the actual number on it
       this.phone += (res.user.phone).toString() 
       // console.log(this.phone)
       this.name = res.user.name
