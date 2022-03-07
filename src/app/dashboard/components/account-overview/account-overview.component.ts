@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import jwt_decode from 'jwt-decode';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -11,8 +10,7 @@ export class AccountOverviewComponent implements OnInit {
 
   constructor(private dashService:DashboardService) { }
  
-  userToken:string='';
-  userID:string='';
+  
   name:string='';
   email:string='';
   password:string='';
@@ -21,28 +19,13 @@ export class AccountOverviewComponent implements OnInit {
   phone:string='0';
 
 ngOnInit(): void {
-  this.getUserID()
+  this.dashService.getUserID()
   this.accountOverview()
 }
-getDecodedAccessToken(token: string): any {
-  try {
-    return jwt_decode(token);
-  } catch(Error) {
-    return null;
-  }
-}
-getUserID(){
-  const user:any  = localStorage.getItem('user')
-  this.userToken = JSON.parse(user).token
-  console.log(this.userToken)
-  const  tokenInfo = this.getDecodedAccessToken(  this.userToken ); // decode token
-  this.userID = tokenInfo.userId
-  // console.log(this.userID)
-  // return this.userID
-}
+
 accountOverview(){
   
-  this.dashService.getUser(this.userID).subscribe({
+  this.dashService.getUser(this.dashService.userID).subscribe({
     next:(res)=>{
 
     //  console.log(res.user)
