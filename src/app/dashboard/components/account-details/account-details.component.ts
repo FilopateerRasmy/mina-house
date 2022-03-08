@@ -60,15 +60,26 @@ accountOverview(){
   
   this.dashService.getUser(this.dashService.userID).subscribe({
     next:(res)=>{
-
-    
-      this.street = res.user.address.street
-      this.city = res.user.address.city
+      this.accountDetailsForm.setValue({
+        name: res.user.name,
+        email:res.user.email,
+        address:{
+          street :  res.user.address.street,
+          city : res.user.address.city
+          
+        },
+        // we add the += as the 0 is not included so we intialize the 
+        // the phone variable with 0 and then add the actual number on it
+          phone : "0"+(res.user.phone).toString() 
+      })
+      
+      // this.street = res.user.address.street
+      // this.city = res.user.address.city
       // we add the += as the 0 is not included so we intialize the 
       // the phone variable with 0 and then add the actual number on it
-      this.phone += (res.user.phone).toString() 
-      this.name = res.user.name
-      this.email = res.user.email
+      // this.phone += (res.user.phone).toString() 
+      // this.name = res.user.name
+      // this.email = res.user.email
 
       // this.accountDetailsForm.value.name   = res.user.name
       // this.accountDetailsForm.value.email  = res.user.email
@@ -86,40 +97,40 @@ onInputChange(){
 }
 onSubmit(){
 
-      if(this.accountDetailsForm.get('name')?.dirty ){
-        console.log('hi name is changed')
-        this.name = this.accountDetailsForm.value.name
-      }else{
-        this.accountDetailsForm.value.name = this.name
-      }
+      // if(this.accountDetailsForm.get('name')?.dirty ){
+      //   console.log('hi name is changed')
+      //   this.name = this.accountDetailsForm.value.name
+      // }else{
+      //   this.accountDetailsForm.value.name = this.name
+      // }
 
-      if(this.accountDetailsForm.get('email')?.dirty ){
-        console.log('hi email is changed')
-        this.email = this.accountDetailsForm.value.email
-      }else{
-        this.accountDetailsForm.value.email = this.email
-      }
+      // if(this.accountDetailsForm.get('email')?.dirty ){
+      //   console.log('hi email is changed')
+      //   this.email = this.accountDetailsForm.value.email
+      // }else{
+      //   this.accountDetailsForm.value.email = this.email
+      // }
 
-      if(this.accountDetailsForm.get('phone')?.dirty ){
-        console.log('hi phone is changed')
-        this.phone = this.accountDetailsForm.value.phone
-      }else{
-        this.accountDetailsForm.value.phone = this.phone
-      }
+      // if(this.accountDetailsForm.get('phone')?.dirty ){
+      //   console.log('hi phone is changed')
+      //   this.phone = this.accountDetailsForm.value.phone
+      // }else{
+      //   this.accountDetailsForm.value.phone = this.phone
+      // }
 
-      if(this.accountDetailsForm.get('street')?.dirty ){
-        console.log('hi street is changed')
-        this.street = this.accountDetailsForm.value.street
-      }else{
-        this.accountDetailsForm.value.street = this.street
-      }
+      // if(this.accountDetailsForm.get('street')?.dirty ){
+      //   console.log('hi street is changed')
+      //   this.street = this.accountDetailsForm.value.street
+      // }else{
+      //   this.accountDetailsForm.value.street = this.street
+      // }
 
-      if(this.accountDetailsForm.get('city')?.dirty ){
-        console.log('hi city is changed')
-        this.city = this.accountDetailsForm.value.city
-      }else{
-        this.accountDetailsForm.value.city = this.city
-      }
+      // if(this.accountDetailsForm.get('city')?.dirty ){
+      //   console.log('hi city is changed')
+      //   this.city = this.accountDetailsForm.value.city
+      // }else{
+      //   this.accountDetailsForm.value.city = this.city
+      // }
 
   console.log(this.accountDetailsForm.value)
 

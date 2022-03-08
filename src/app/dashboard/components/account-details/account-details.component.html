@@ -9,7 +9,7 @@
         
                 <div class="field col-12 m-2 md:col-5">
                     <label for="userName">User Name</label>
-                    <input id="userName"   [value]="name" type="text" formControlName="name" class="inputfield w-full p-3">
+                    <input id="userName"   type="text" formControlName="name" class="inputfield w-full p-3">
                     <div *ngIf="getErrors('name') && getField('name')?.dirty">
                         <p *ngIf="getErrors('name')?.['required']">
                         please provide a user name
@@ -18,7 +18,7 @@
                         user name must be 3 characters and more
                         </p>
                         <p *ngIf="getErrors('name')?.['maxlength']">
-                        user name must less than 50 characters
+                        user name must be less than 50 characters
                         </p>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
 
             <div class="field col-12 m-2  md:col-6">
                 <label for="Phone">E-mail</label>
-                <input id="Phone"   [value]="email" type="text" formControlName="email" class="inputfield w-full p-3"/>
+                <input id="Phone"    type="text" formControlName="email" class="inputfield w-full p-3"/>
                 <div *ngIf="getErrors('email') && getField('email')?.dirty">
                     <p *ngIf="getErrors('email')?.['required']">please provide a email</p>
                     <p *ngIf="getErrors('email')?.['email']">
@@ -43,7 +43,7 @@
 
             <div class="field col-12 m-2 md:col-6">
                 <label for="Phone">Phone Number</label>
-                <input id="Phone"   [value]="phone"  type="text" formControlName="phone" class="inputfield w-full p-3">
+                <input id="Phone"     type="text" formControlName="phone" class="inputfield w-full p-3">
                 <div *ngIf="getErrors('phone') && getField('phone')?.dirty">
                     <p *ngIf="getErrors('phone')?.['required']">please provide a phone</p>
                     <p *ngIf="getErrors('phone')?.['minlength']">
@@ -60,11 +60,11 @@
 <div formGroupName="address">
             <div class="field col-12 m-2 md:col-3">
                 <label for="city">City</label>
-                <input id="city"   [value]="city" type="text" formControlName="city" 
+                <input id="city"   type="text" formControlName="city" 
                 class="inputfield w-full p-3"/>
 
-                <div *ngIf="getErrors('city') && getField('city')?.dirty">
-                    <p *ngIf="getErrors('city')?.['required'] ">please provide a city</p>
+                <div *ngIf="getErrors('address.city') && getField('address.city')?.dirty">
+                    <p *ngIf="getErrors('address.city')?.['required'] ">please provide a city</p>
                 </div>
             </div>
 
@@ -73,10 +73,10 @@
 
             <div class="field col-10 m-2">
                 <label for="address">Address</label>
-                <input id="address"  [value]="street" type="text" rows="1" 
+                <input id="address"  type="text" rows="1" 
                 formControlName="street" class="inputfield w-full p-3">
-                <div *ngIf="getErrors('street') && getField('street')?.dirty  ">
-                    <p *ngIf="getErrors('street')?.['required']">
+                <div *ngIf="getErrors('address.street') && getField('address.street')?.dirty  ">
+                    <p *ngIf="getErrors('address.street')?.['required']">
                         please provide an address
                     </p>
                   </div>
@@ -89,7 +89,7 @@
                 <button pButton type="submit" (click)="onSubmit()" 
 
                 [disabled]="
-                  accountDetailsForm.invalid"
+                  accountDetailsForm.invalid || accountDetailsForm.pristine"
                     class="p-button-raised p-button-rounded ">
                     Save Changes
                 </button>
