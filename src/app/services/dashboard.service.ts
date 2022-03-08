@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {user} from '../shared/dashboard-userInterface'
 import jwt_decode from 'jwt-decode';
 import { AuthService } from './auth.service';
-
+import { registerData } from '../shared/registerInterface';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,12 +22,13 @@ export class DashboardService {
     return this.http.get<user>(this.URL + userID , header)
   }
 
-  updateUser(userID:string , user:user){
+  updateUser( user:registerData  ){
+    console.log(user)
     var header = {
       headers: new HttpHeaders()
         .set('Authorization',  `Bearer ${this.userToken}`)}
 
-    return this.http.patch<user>(this.URL + userID , user, header)
+    return this.http.patch<registerData>(this.URL + "updateUser" , user, header)
   }
   getDecodedAccessToken(token: string): any {
     try {
