@@ -31,11 +31,11 @@
               (onClick)="cart(product)"></p-button>
             <span *ngIf="product.countInStock==0" class="outofstock p-1 font-bold">OUTOFSTOCK</span>
             <span *ngIf="product.countInStock!==0" class="instock p-1 font-bold">INSTOCK</span>
-
           </div>
         </div>
       </div>
     </ng-template>
+
     <ng-template let-product pTemplate="gridItem">
       <div class="col-12 md:col-4">
         <div class="product-grid-item card">

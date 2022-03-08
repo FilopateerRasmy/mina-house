@@ -1,0 +1,16 @@
+.selection:hover{
+    box-shadow: 10px;
+    border: solid black 1px;
+    border-radius: 10px;
+    box-shadow: 2px 5px;
+}
+
+a{
+   text-decoration: none;
+}
+
+.active{
+    background-color:  #6366F1;
+    color: white ;
+    border-radius: 10px;
+ }

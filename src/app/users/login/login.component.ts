@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   })
   ngOnInit(): void {
+    // console.log(this.loginForm.value)
   }
   getErrors(field: string) {
     return this.loginForm.get(field)?.errors;
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   }
   onLogin()
   {
+    
     this.auth.login(this.loginForm.value).subscribe({
       next:(res)=>{
 
