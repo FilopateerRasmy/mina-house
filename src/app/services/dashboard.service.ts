@@ -4,6 +4,8 @@ import {user} from '../shared/dashboard-userInterface'
 import jwt_decode from 'jwt-decode';
 import { AuthService } from './auth.service';
 import { registerData } from '../shared/registerInterface';
+import { Password } from '../shared/passwordFormInterface';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +31,14 @@ export class DashboardService {
         .set('Authorization',  `Bearer ${this.userToken}`)}
 
     return this.http.patch<registerData>(this.URL + "updateUser" , user, header)
+  }
+  
+  changeUserPass(password:Password){
+    var header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${this.userToken}`)}
+
+    return this.http.patch<Password>(this.URL + "updateUserPassword" , password, header)
   }
   getDecodedAccessToken(token: string): any {
     try {

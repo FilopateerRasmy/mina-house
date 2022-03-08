@@ -26,14 +26,14 @@ export class AccountDetailsComponent implements OnInit {
     phone: ['', [Validators.required, Validators.minLength(11),Validators.maxLength(11)]],
   });
   
-  submitDisabled:boolean = false
+  // submitDisabled:boolean = false
 
-  name:string='';
-  email:string='';
-  // password:string='';
-  street:string='';
-  city:string='';
-  phone:string='0';
+  // name:string='';
+  // email:string='';
+  // // password:string='';
+  // street:string='';
+  // city:string='';
+  // phone:string='0';
 
 ngOnInit(): void {
   this.dashService.getUserID()
@@ -91,10 +91,10 @@ accountOverview(){
     
   })
 }
-onInputChange(){
-  console.log('on input chnage function')
-  // this.submitDisabled = false
-}
+// onInputChange(){
+//   console.log('on input chnage function')
+//   // this.submitDisabled = false
+// }
 onSubmit(){
 
       // if(this.accountDetailsForm.get('name')?.dirty ){
