@@ -40,6 +40,7 @@ export class ChangePasswordComponent implements OnInit {
     if(this.changePassForm.value.reTypedPassword !== 
       this.changePassForm.value.newPassword){
          this.matchPasswordErr = true
+         setTimeout(()=>{this.matchPasswordErr = false},3000)
          this.showError()
          return}
     
