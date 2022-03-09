@@ -12,6 +12,8 @@ import { MessageService } from 'primeng/api';
 export class DisplayProductsComponent implements OnInit, OnChanges {
   productName = '';
   
+ 
+  
   constructor( private cartService:CartService, private messageService:MessageService) { }
  @Input() products: IProduct[] = [];
   beforeFilter:IProduct[] =  [];

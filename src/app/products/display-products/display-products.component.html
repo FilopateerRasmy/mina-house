@@ -22,9 +22,12 @@
             <div class="product-name">{{product.name}}</div>
             <div class="product-description">{{product.description.slice(0,30)}}</div>
             <p-rating [ngModel]="product.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+            <div>Reviews</div>
+            
             <i class="pi pi-tag product-category-icon"></i><span
               class="product-category">{{product.category.name}}</span>
           </div>
+          
           <div class="product-list-action">
             <span class="product-price">${{product.price}}</span>
             <p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="product.countInStock === 0"
@@ -52,6 +55,7 @@
             <div class="product-name">{{product.name}}</div>
             <div class="product-description">{{product.description.slice(0,30)}}...</div>
             <p-rating [ngModel]="product.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+            <a>reviews</a>
           </div>
           <div class="product-grid-item-bottom">
             <span class="product-price">${{product.price}}</span>
