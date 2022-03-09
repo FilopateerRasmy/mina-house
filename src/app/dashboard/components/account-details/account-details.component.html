@@ -7,33 +7,41 @@
         
 <!-- --------------- Field 1 : userName ----------------------------------------- -->
         
-                <div class="field col-12 m-2 md:col-5">
+                <div class="field col-12 m-2 md:col-5 mb-5">
                     <label for="userName">User Name</label>
                     <input id="userName"   type="text" formControlName="name" class="inputfield w-full p-3">
                     <div *ngIf="getErrors('name') && getField('name')?.dirty">
-                        <p *ngIf="getErrors('name')?.['required']">
-                        please provide a user name
-                        </p>
-                        <p *ngIf="getErrors('name')?.['minlength']">
-                        user name must be 3 characters and more
-                        </p>
-                        <p *ngIf="getErrors('name')?.['maxlength']">
+                        <small *ngIf="getErrors('name')?.['required']">
+                            <span class="pi pi-info-circle"></span>
+                        please provide a valid user name
+                        </small>
+                        <small *ngIf="getErrors('name')?.['minlength']">
+                            <span class="pi pi-info-circle"></span>
+                        User Name must be more than 3 characters 
+                        </small>
+                        <small *ngIf="getErrors('name')?.['maxlength']">
+                            <span class="pi pi-info-circle"></span>
                         user name must be less than 50 characters
-                        </p>
+                        </small>
                     </div>
                 </div>
     
 
 <!-- --------------- Field 2 : E-mail ----------------------------------------- -->
 
-            <div class="field col-12 m-2  md:col-6">
+            <div class="field col-12 m-2  md:col-6 mb-5">
                 <label for="Phone">E-mail</label>
                 <input id="Phone"    type="text" formControlName="email" class="inputfield w-full p-3"/>
                 <div *ngIf="getErrors('email') && getField('email')?.dirty">
-                    <p *ngIf="getErrors('email')?.['required']">please provide a email</p>
-                    <p *ngIf="getErrors('email')?.['email']">
+                    <small *ngIf="getErrors('email')?.['required']">
+                        <span class="pi pi-info-circle"></span>
+                        please provide a valid email
+                        
+                    </small>
+                    <small *ngIf="getErrors('email')?.['email']">
+                        <span class="pi pi-info-circle"></span>
                       please provide a valid email
-                    </p>
+                    </small>
                 </div>
             </div>
 
@@ -41,47 +49,56 @@
 <!-- --------------- Field 3 : Phone Number ----------------------------------------- -->
 
 
-            <div class="field col-12 m-2 md:col-6">
+            <div class="field col-12 m-2 md:col-5 mb-5">
                 <label for="Phone">Phone Number</label>
                 <input id="Phone"     type="text" formControlName="phone" class="inputfield w-full p-3">
                 <div *ngIf="getErrors('phone') && getField('phone')?.dirty">
-                    <p *ngIf="getErrors('phone')?.['required']">please provide a phone</p>
-                    <p *ngIf="getErrors('phone')?.['minlength']">
-                        please provide a valid phone
-                    </p>
-                    <p *ngIf="getErrors('phone')?.['maxlength']">
-                        please provide a valid phone
-                    </p>
+                    <small *ngIf="getErrors('phone')?.['required']">
+                        <span class="pi pi-info-circle"></span>
+                        please provide a phone number</small>
+                    <small *ngIf="getErrors('phone')?.['minlength']">
+                        <span class="pi pi-info-circle"></span>
+                        please provide a valid phone number
+                    </small>
+                    <small *ngIf="getErrors('phone')?.['maxlength']">
+                        <span class="pi pi-info-circle"></span>
+                        please provide a valid phone number
+                    </small>
               </div>
             </div>
 
 
-<!-- --------------- Field 4 : City ------------------------------------------------ -->
-<div formGroupName="address">
-            <div class="field col-12 m-2 md:col-3">
-                <label for="city">City</label>
-                <input id="city"   type="text" formControlName="city" 
-                class="inputfield w-full p-3"/>
-
-                <div *ngIf="getErrors('address.city') && getField('address.city')?.dirty">
-                    <p *ngIf="getErrors('address.city')?.['required'] ">please provide a city</p>
-                </div>
-            </div>
-
-
-<!-- --------------- Field 5 : Address ------------------------------------------------ -->
-
-            <div class="field col-10 m-2">
-                <label for="address">Address</label>
-                <input id="address"  type="text" rows="1" 
-                formControlName="street" class="inputfield w-full p-3">
-                <div *ngIf="getErrors('address.street') && getField('address.street')?.dirty  ">
-                    <p *ngIf="getErrors('address.street')?.['required']">
-                        please provide an address
-                    </p>
-                  </div>
-            </div>
-
+<!-- --------------- Field 4 : Address ------------------------------------------------ -->
+<div formGroupName="address" class="grid m-2 ">
+            
+    <div class="field col-12  md:col-8     mb-5">
+        <label for="address" >Address</label>
+        <input id="address"  type="text" rows="1" 
+        formControlName="street" class="inputfield w-full p-3">
+        <div *ngIf="getErrors('address.street') && getField('address.street')?.dirty  ">
+            <small *ngIf="getErrors('address.street')?.['required']">
+                <span class="pi pi-info-circle"></span>
+                please provide an address
+            </small>
+        </div>
+    </div>
+    
+    
+    <!-- --------------- Field 5 : city ------------------------------------------------ -->
+    
+    <div class="field col-12  md:col-4 mb-5">
+        <label for="city">City</label>
+        <input id="city"   type="text" formControlName="city" 
+        class="inputfield w-full p-3"/>
+        
+        <div *ngIf="getErrors('address.city') && getField('address.city')?.dirty">
+            <small   *ngIf="getErrors('address.city')?.['required'] ">
+                <span class="pi pi-info-circle"></span>
+                please provide a city</small>
+        </div>
+    </div>
+    
+   
 </div>
 <!-- --------------- Field 6 : Submit Button ------------------------------------------- -->
             
