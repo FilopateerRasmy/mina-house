@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import {MessageService} from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-details',
@@ -11,7 +12,7 @@ import {MessageService} from 'primeng/api';
 })
 export class AccountDetailsComponent implements OnInit {
 
-  constructor(private fb:FormBuilder , private dashService:DashboardService, private messageService: MessageService) { }
+  constructor(private fb:FormBuilder , private dashService:DashboardService, private messageService: MessageService,private router:Router) { }
   accountDetailsForm = this.fb.group({
     name: [
       '',
@@ -86,6 +87,8 @@ onSubmit(){
     next:(res)=>{
       console.log(res)
       this.showSuccess()
+      setTimeout(()=>{ this.router.navigateByUrl('/customer/account/overview');},1500)
+
       },
     error:(err:any)=> {
       console.log( err.error.msg)

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import {MessageService} from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -12,18 +13,32 @@ import {MessageService} from 'primeng/api';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  constructor(private fb:FormBuilder , private dashService:DashboardService , private messageService: MessageService) { }
+  constructor(private fb:FormBuilder , private dashService:DashboardService , private messageService: MessageService,private router:Router) { }
   matchPasswordErr:boolean = false
-  changePassForm = this.fb.group({
 
+  showPasswordIcon1:boolean = false
+  showPasswordIcon2:boolean = false
+  showPasswordIcon3:boolean = false
+
+  changePassForm = this.fb.group({
+    
     oldPassword:     ['', [Validators.required, Validators.minLength(4)]],
     newPassword:     ['', [Validators.required, Validators.minLength(4)]],
     reTypedPassword: ['', [Validators.required, Validators.minLength(4)]],
     
   });
-
+  
   ngOnInit(): void {
 
+  }
+  toggleFieldTextType() {
+    this.showPasswordIcon1 = !this.showPasswordIcon1;
+  }
+  toggleFieldTextType2() {
+    this.showPasswordIcon2 = !this.showPasswordIcon2;
+  }
+  toggleFieldTextType3() {
+    this.showPasswordIcon3 = !this.showPasswordIcon3;
   }
 
   showSuccess() {
@@ -48,6 +63,7 @@ export class ChangePasswordComponent implements OnInit {
     next:(res)=>{
       console.log(res)
       this.showSuccess()
+      setTimeout(()=>{ this.router.navigateByUrl('/customer/account/overview');},1500)
       },
     error:(err:any)=> {
       console.log( err.error.msg) 
