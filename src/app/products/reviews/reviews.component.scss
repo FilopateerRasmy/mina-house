@@ -2,13 +2,36 @@
    
     width: 15vw;
     margin-top: 20px;
+    margin-left: 2vw; 
     
 }
+.form{border: 1px solid grey; padding-bottom: 5rem; margin: auto; width: 95%; border-radius: 10px;}
+.btn{float: right;}
+.rate{margin-bottom: 1rem;}
+
+
 p{color:red}
 
 #float-input{
-    padding: 7px;
+    padding: 9px;
+
 }
 
+.review-box{
+    border: 1px solid grey;
+    padding: 3rem;
+    margin: 2vh;
+    border-radius: 10px;
+}
+
+.comment{
+    margin-bottom: 1rem;
+    
+   
+}
+
+.btns{ float: right;}
+.del-btn{margin-right: 1vw;}
+.username{padding-bottom: 2rem;}
 
 
