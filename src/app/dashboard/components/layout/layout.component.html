@@ -1,6 +1,6 @@
-
 <div class="overflow-x-hidden">
 <section class="grid p-4 surface-200 ">
+    <!-- ------------------ Col 1/2 of the layout --------------- -->    
     <div class=" col-12 hidden  sm:col-3  mr-3 sm:block surface-0 p-3">
         <div class="grid mt-3">
 
@@ -45,7 +45,46 @@
         </div>
 
     </div>
-    <div class="col-12  sm:col-8 surface-0">
+<!-- ------------------ Col 2/2 of the layout --------------- -->    
+    <div class="col-12  sm:col-8 surface-0"> 
+        <p-toolbar class="sm:hidden ">
+            <div class="flex flex-wrap ">
+                <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+             routerLink="account/overview" class="col cursor-pointer selection">
+                <i class="pi pi-user " style="font-size: 1.2rem"></i>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            routerLink="wishlist" class="col cursor-pointer selection">
+                <i class="pi pi-heart" style="font-size: 1.2rem"></i>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+             routerLink="account/edit"class="col cursor-pointer selection">
+                <i class="pi pi-info-circle " style="font-size: 1.2rem"></i>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            routerLink="orders"class="col cursor-pointer selection">
+                <i class="pi pi-shopping-bag
+                " style="font-size: 1.2rem"></i>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            routerLink="new-password" class="col flex md:block cursor-pointer selection ">
+                <i class="pi pi-lock  align-self-center " style="font-size: 1.2rem"></i>
+            </a>
+
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" 
+            (click)="logout()" class="col flex md:block cursor-pointer selection ">
+                <i class="pi pi-sign-out
+                align-self-center " style="font-size: 1.2rem"></i>
+            </a>
+               
+            </div>
+            
+            
+        </p-toolbar>
         <router-outlet></router-outlet>
     </div>
 
