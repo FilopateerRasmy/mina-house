@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,7 +12,7 @@ import { Ireview } from 'src/app/shared/reviews';
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss']
 })
-export class ReviewsComponent implements OnInit {
+export class ReviewsComponent implements OnInit , OnChanges {
 
   product!:IProduct;
 
@@ -25,6 +25,7 @@ export class ReviewsComponent implements OnInit {
   })
  
   msg: any;
+  
  
   
   constructor(private fb:FormBuilder,private route:ActivatedRoute,private auth:AuthService, private reviewService : ReviewsService , private productService: ProductsService) { }
@@ -32,10 +33,15 @@ export class ReviewsComponent implements OnInit {
   reviews:any
   userId:any
   uName:any
+  reviewId: any;
+  reviewIndex: any;
+  
   
     
     
- 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+  }
 
   ngOnInit(): void {
 
@@ -68,39 +74,82 @@ export class ReviewsComponent implements OnInit {
         
       }
       ////////////////////////////////////////////
+      
       if(this.ProductId){
       this.reviewService.getProductReviews(this.ProductId).subscribe({
         next:(res)=>{
          const json = JSON.stringify(res)
          const data = JSON.parse(json)
-         console.log(json);
-         
+
           this.reviews = data.reviews;
-         
-         
+  
+          ///console.log(this.reviewService.userID); //usertoken
+          for (const review of this.reviews) {
+            if(review.user === this.reviewService.userID )
+            {
+              this.reviewId = review._id
+              this.reviewIndex= this.reviews.indexOf(review)
+            }
+            
+          }
+
   
         },
         error:(err)=>{console.log(err);}
         
       })
     }
+
       
   })
     
   }
 
+ 
+
   send(){
    
-    console.log(this.reviewForm.value);
-    
-    
     this.reviewService.createReview(this.reviewForm.value).subscribe({
-      next: (res)=>{ console.log(res)},
+      next: (res)=>{ 
+        console.log(res)
+        this.ngOnInit()
+        this.reviewForm.get('comment')?.reset()
+         this.reviewForm.get('rating')?.reset()
+      },
       error:(err)=>{console.log(err)}
 
     })
+
+  
   }
 
+  delete(id:string){
+
+    if( this.reviewId === id){
+      this.reviewService.deleteReview(this.reviewId).subscribe({
+        next:(res)=>{console.log(res);
+          this.reviews.splice(this.reviewIndex,1)
+        },
+        error:(err)=>{console.log(err);}
+        
+      })
+    }
+    else{
+      alert("you cannot delete or update this review")
+    }
+  }
+
+   update(id:string){
+  const oldComment =this.reviews[this.reviewIndex].comment;
+  const oldRating = this.reviews[this.reviewIndex].rating;
+   this.delete(id);
+  this.reviewForm.get('comment')?.patchValue(oldComment)
+  this.reviewForm.get('rating')?.patchValue(oldRating)
+  let element = document.querySelector('textarea');
+    if (element instanceof HTMLElement) {
+        element.focus();
+    }
+  }
 
 
 

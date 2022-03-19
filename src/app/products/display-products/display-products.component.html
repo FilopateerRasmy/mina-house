@@ -21,7 +21,7 @@
           <div class="product-list-detail">
             <div class="product-name">{{product.name}}</div>
             <div class="product-description">{{product.description.slice(0,30)}}</div>
-            <p-rating [ngModel]="product.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+            <p-rating [ngModel]="product.averageRating" [iconOnStyle]="{'color':'#ffab18'}" [readonly]="true" [cancel]="false"></p-rating>
             <div>Reviews</div>
             
             <i class="pi pi-tag product-category-icon"></i><span
@@ -54,7 +54,7 @@
               [routerLink]="['/products',product._id]" />
             <div class="product-name">{{product.name}}</div>
             <div class="product-description">{{product.description.slice(0,30)}}...</div>
-            <p-rating [ngModel]="product.averageRating" [readonly]="true" [cancel]="false"></p-rating>
+            <p-rating [ngModel]="product.averageRating" [iconOnStyle]="{'color':'#ffab18'}" [readonly]="true" [cancel]="false"></p-rating>
             <a>reviews</a>
           </div>
           <div class="product-grid-item-bottom">

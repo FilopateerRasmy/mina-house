@@ -27,7 +27,7 @@ getToken(){
 }
 getInfo(){
   this.getToken()
-  console.log(this.userToken)
+  //console.log(this.userToken)
   const  tokenInfo = this.getDecodedAccessToken(  this.userToken ); // decode token
   this.userID = tokenInfo.userId
   this.userName = tokenInfo.name
@@ -41,4 +41,12 @@ getInfo(){
  getProductReviews(id:string){
    return this.http.get(`http://localhost:3000/api/v1/reviews/${id}`)
  }
+
+
+ deleteReview(id:string){
+  return this.http.delete(`http://localhost:3000/api/v1/reviews/${id}`)
+ }
+
+
+ 
 }
