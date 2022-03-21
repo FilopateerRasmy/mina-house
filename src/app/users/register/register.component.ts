@@ -40,12 +40,19 @@ msg = ''
       next:(res)=>{
         this.auth.saveUser(res.token, res.user.name);
         this.router.navigateByUrl('/');
+      
       },
       error:(err)=>{
         this.msg = err.error.msg
+        
       }
+  
 
     })
+
   }
+
+  
+  
 
 }
