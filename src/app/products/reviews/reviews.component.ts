@@ -106,7 +106,6 @@ export class ReviewsComponent implements OnInit , OnChanges {
   }
 
  
-
   send(){
    
     this.reviewService.createReview(this.reviewForm.value).subscribe({
@@ -150,7 +149,5 @@ export class ReviewsComponent implements OnInit , OnChanges {
         element.focus();
     }
   }
-
-
 
 }
