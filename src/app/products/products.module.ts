@@ -7,7 +7,8 @@ import { ProductsDetailComponent } from './products-detail/products-detail.compo
 
 import { PrimengModule } from '../primeng/primeng.module';
 import { DisplayProductsComponent } from './display-products/display-products.component';
-
+import { ReviewsComponent } from './reviews/reviews.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,12 +16,13 @@ import { DisplayProductsComponent } from './display-products/display-products.co
   declarations: [
     ProductsListComponent,
     ProductsDetailComponent,
-
+    ReviewsComponent,
     DisplayProductsComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
+    ReactiveFormsModule,
 
    PrimengModule
   ]
