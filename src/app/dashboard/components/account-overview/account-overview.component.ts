@@ -27,7 +27,7 @@ accountOverview(){
   
   this.dashService.getUser(this.dashService.userID).subscribe({
     next:(res)=>{
-
+      console.log(res)
     //  console.log(res.user)
       this.street = res.user.address.street
       this.city = res.user.address.city
@@ -38,7 +38,7 @@ accountOverview(){
       this.name = res.user.name
       this.email = res.user.email
       },
-    error:(err:any)=> {console.log( err.error.msg)}
+    error:(err:any)=> {console.log( err)}
     
   })
 }

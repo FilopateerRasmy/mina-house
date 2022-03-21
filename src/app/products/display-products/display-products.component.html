@@ -20,7 +20,7 @@
           <img [src]="product.image" [alt]="product.name" class="list-img " [routerLink]="['/products',product._id]" />
           <div class="product-list-detail">
             <div class="product-name">{{product.name}}</div>
-            <div class="product-description">{{product.description.slice(0,30)}}</div>
+            <div class="product-description" [innerHTML]="product.description"></div>
             <p-rating [ngModel]="product.averageRating" [readonly]="true" [cancel]="false"></p-rating>
             <i class="pi pi-tag product-category-icon"></i><span
               class="product-category">{{product.category.name}}</span>
