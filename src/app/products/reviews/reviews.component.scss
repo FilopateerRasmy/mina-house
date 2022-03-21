@@ -1,0 +1,62 @@
+.p-float-label{
+    margin-top: 20px;
+    margin-left: 1.5rem;   
+}
+.form{border: 1px solid grey; padding-bottom: 1.5rem; margin-left: 1.5rem ; width: 70%; border-radius: 10px;}
+.btn{float: right;}
+.rate{margin-bottom: 1rem;}
+p{color:red}
+textarea {width: 67.5vw; border-radius: 5px; height: 5vh; padding: 9px;}
+.review-box{
+    border: 1px solid grey;
+    display: grid;
+    row-gap: 3vh;
+   width: 70%;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    margin: 2vh;
+    border-radius: 10px;
+}
+.rate-btns{
+    display: grid;
+    grid-template-columns: 93% 7%;
+}
+
+.rate-btn{
+    display: grid;
+    grid-template-columns: 92% 8%;
+}
+h2,a{ color:#6F71EF;}
+h2{ width:fit-content; }
+
+.del-btn{margin-right: 1vw;}
+
+@media only screen and (max-width: 644px) {
+    a{display: inline-block;}
+  }
+
+  @media screen and (max-width:1500px) {
+    textarea {width: 65vw;}
+    .rate-btn{
+        display: grid;
+        grid-template-columns: 87% 13%;
+    }
+
+  }
+
+  @media screen and (max-width:1000px) {
+    textarea {width: 64vw;}
+    .rate-btn{
+        display: grid;
+        grid-template-columns: 82% 18%;
+    }
+
+    @media screen and (max-width:720px) and (min-width: 414px) {
+        textarea {width: 60vw;}
+        .rate-btn{
+            display: grid;
+            grid-template-columns: 65% 35%;
+        }
+    }
+
+  }
