@@ -120,7 +120,7 @@ export class ReviewsComponent implements OnInit , OnChanges {
 
     })
 
-  
+
   }
 
   delete(id:string){
