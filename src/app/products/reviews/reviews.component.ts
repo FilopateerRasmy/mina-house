@@ -12,7 +12,7 @@ import { Ireview } from 'src/app/shared/reviews';
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss']
 })
-export class ReviewsComponent implements OnInit , OnChanges {
+export class ReviewsComponent implements OnInit  {
 
   product!:IProduct;
 
@@ -28,27 +28,38 @@ export class ReviewsComponent implements OnInit , OnChanges {
   
  
   
-  constructor(private fb:FormBuilder,private route:ActivatedRoute,private auth:AuthService, private reviewService : ReviewsService , private productService: ProductsService) { }
+
+  constructor(private fb:FormBuilder,private route:ActivatedRoute,private auth:AuthService, private reviewService : ReviewsService , private productService: ProductsService) { 
+  
+  }
   ProductId :any;
-  reviews:any
+ reviews:any;
   userId:any
   uName:any
   reviewId: any;
   reviewIndex: any;
+   date = new Date();
+   today:any;
+   isActive :any;
   
   
-    
-    
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
-  }
 
   ngOnInit(): void {
 
+    this.isActive = true;
+    var dd = String(this.date.getDate()).padStart(2, '0');
+    var mm = String(this.date.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = this.date.getFullYear();
+
+    this.today = mm + '/' + dd + '/' + yyyy;
     
+    
+
+
 
     this.reviewService.getInfo()
     this.route.paramMap.subscribe((params:ParamMap) =>{
+     
       this.ProductId = params.get('id');
       this.reviewForm.patchValue({
         product : this.ProductId
@@ -82,6 +93,9 @@ export class ReviewsComponent implements OnInit , OnChanges {
          const data = JSON.parse(json)
 
           this.reviews = data.reviews;
+          //this.reviewsLength= this.reviews.length
+          //console.log(this.reviewsLength);
+          
   
           ///console.log(this.reviewService.userID); //usertoken
           for (const review of this.reviews) {
@@ -145,8 +159,12 @@ export class ReviewsComponent implements OnInit , OnChanges {
   this.reviewForm.get('comment')?.patchValue(oldComment)
   this.reviewForm.get('rating')?.patchValue(oldRating)
   let element = document.querySelector('textarea');
-    if (element instanceof HTMLElement) {
+  let commentPanel = document.getElementsByClassName("commentPanel")
+    if (element instanceof HTMLElement && commentPanel instanceof HTMLElement) {
+      
         element.focus();
+        
+
     }
   }
 

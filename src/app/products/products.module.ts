@@ -6,6 +6,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsDetailComponent } from './products-detail/products-detail.component';
 
 import { PrimengModule } from '../primeng/primeng.module';
+import {TabViewModule} from 'primeng/tabview';
+import {PaginatorModule} from 'primeng/paginator';
 import { DisplayProductsComponent } from './display-products/display-products.component';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ProductsRoutingModule,
     ReactiveFormsModule,
-
+    TabViewModule,
+    PaginatorModule,
    PrimengModule
   ]
 })
