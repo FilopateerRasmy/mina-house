@@ -27,7 +27,7 @@
 
         
         <p-tabPanel  class="commentPanel" header="Leave a comment" [selected]="true" >
-            <form [formGroup]="reviewForm" (ngSubmit)="send()" class="form">
+            <form [formGroup]="reviewForm" (ngSubmit)="send()"  class="shadow-8 md:shadow-2 box surface-overlay p-3 m-3  form">
                 <span class="p-float-label">
                     <textarea formControlName="comment"  id="comment"   pInputTextarea placeholder="Drop off your comment..."></textarea>
                     <div *ngIf="reviewForm.get('comment')?.errors && reviewForm.get('comment')?.touched ">
