@@ -2,11 +2,11 @@
     margin-top: 20px;
     margin-left: 1.5rem;   
 }
-.form{border: 1px solid #DDDD; padding-bottom: 1.5rem; margin-left: 1rem ; width: 80%; border-radius: 5px;}
+.form{   width: 80%; }
 .btn{float: right;}
 .rate{margin-bottom: 1rem;}
 p{color:red}
-textarea {width: 74vw;border-color: #DDDD; border-radius: 5px; height: 5vh; padding: 9px;}
+textarea {width: 71.5vw;border-color: #DDDD; border-radius: 5px; height: 5vh; padding: 9px;}
 .review-box{
     display: grid;
     row-gap: 2vh;
@@ -28,7 +28,7 @@ textarea {width: 74vw;border-color: #DDDD; border-radius: 5px; height: 5vh; padd
 }
 h3,a{ color:#6F71EF;}
 h3{ width:fit-content; }
-.username{font-weight: bold;}
+
 .del-btn{margin-right: 1vw;}
 
 @media only screen and (max-width: 644px) {
@@ -36,33 +36,33 @@ h3{ width:fit-content; }
   }
 
 @media screen and (max-width:1500px) {
-    textarea {width: 75vw;}
-    .rate-btn{grid-template-columns: 87% 13%;}
+    textarea {width: 72.5vw;}
+    .rate-btn{grid-template-columns: 90% 10%;}
 
   }
 
   @media screen and (max-width:1280px) and (min-width:1000px) {
-    textarea {width: 73vw;}
+    textarea {width: 70.5vw;}
     .rate-btn{ grid-template-columns: 88% 12%;}
   }
 
     @media screen  and (max-width:1000px)  and (min-width:700px){
-        textarea {width: 70vw;}
+        textarea {width: 67.5vw;}
         .rate-btn{grid-template-columns: 85% 15%;}
     }
 
     @media screen  and (max-width:700px)  and (min-width:550px){
-        textarea {width: 68vw;}
+        textarea {width: 65.5vw;}
         .rate-btn{grid-template-columns: 80% 20%;}
     }
 
     @media screen  and (max-width:550px)  and (min-width:400px){
-        textarea {width: 64vw;}
+        textarea {width: 61.5vw;}
         .rate-btn{grid-template-columns: 72% 28%;}
     }
 
     @media screen  and (max-width:400px)  and (min-width:200px){
-        textarea {width: 56vw;}
+        textarea {width: 53.5vw;}
         .rate-btn{grid-template-columns: 56% 44%;}
     }
 
