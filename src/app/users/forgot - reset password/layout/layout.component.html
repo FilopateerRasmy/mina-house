@@ -1,0 +1,25 @@
+<div class="col-12  surface-0"> 
+    <p-toolbar class=" ">
+        <div class="flex flex-wrap ">
+            <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+                routerLink="forgot-password" class="col cursor-pointer selection">
+                <p class="inline ml-3">forgot-password</p>
+            </a>
+            
+            <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+                routerLink="instructions" class="col cursor-pointer selection">
+                <p class="inline ml-3">instructions</p>
+            </a>
+            
+            
+            <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+                routerLink="reset-password" class="col cursor-pointer selection">
+                <p class="inline ml-3">reset-password</p>
+            </a>
+           
+        </div>
+        
+        
+    </p-toolbar>
+    <router-outlet></router-outlet>
+</div>
