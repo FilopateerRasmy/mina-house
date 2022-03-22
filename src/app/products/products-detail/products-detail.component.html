@@ -16,11 +16,17 @@
         <p *ngIf="product.countInStock!==0" class="p-1 font-bold">INSTOCK</p>
         <p-button [disabled]="product.countInStock === 0" (onClick)="cart(product)"> Add to cart
         </p-button>
+
+        
+
+        
       </div>
 
     </div>
   </div>
 </ng-container>
  
+
+<app-reviews></app-reviews>
 <h2 class="text-center mt-8" *ngIf="msg">{{msg}}</h2>
 

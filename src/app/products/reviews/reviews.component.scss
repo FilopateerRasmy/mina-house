@@ -1,0 +1,71 @@
+.p-float-label{
+    margin-top: 20px;
+    margin-left: 1.5rem;   
+}
+.form{border: 1px solid #DDDD; padding-bottom: 1.5rem; margin-left: 1rem ; width: 80%; border-radius: 10px;}
+.btn{float: right;}
+.rate{margin-bottom: 1rem;}
+p{color:red}
+textarea {width: 76vw;border-color: #DDDD; border-radius: 5px; height: 5vh; padding: 9px;}
+.review-box{
+    border: 1px solid #DDDD;
+    display: grid;
+    row-gap: 3vh;
+   width: 80%;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    margin: 2vh;
+    border-radius: 10px;
+}
+.rate-btns{
+    display: grid;
+    grid-template-columns: 93% 7%;
+}
+
+.rate-btn{
+    display: grid;
+    grid-template-columns: 91% 9%;
+}
+h2,a{ color:#6F71EF;}
+h2{ width:fit-content; }
+
+.del-btn{margin-right: 1vw;}
+
+@media only screen and (max-width: 644px) {
+    a{display: inline-block;}
+  }
+
+@media screen and (max-width:1500px) {
+    textarea {width: 75vw;}
+    .rate-btn{
+        display: grid;
+        grid-template-columns: 87% 13%;
+    }
+
+  }
+
+  @media screen and (max-width:1000px) {
+    textarea {width: 74vw;}
+    .rate-btn{
+        display: grid;
+        grid-template-columns: 82% 18%;
+    }
+
+    @media screen and (max-width:720px) and (min-width: 414px) {
+        textarea {width: 72vw;}
+        .rate-btn{
+            display: grid;
+            grid-template-columns: 70% 30%;
+        }
+    }
+
+    @media screen and (min-width:280px) and (max-width: 414px) {
+        textarea {width: 67vw;}
+        .rate-btn{
+            display: grid;
+            grid-template-columns: 63% 37%;
+        }
+    }
+    
+
+  }
