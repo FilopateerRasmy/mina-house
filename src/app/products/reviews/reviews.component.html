@@ -6,8 +6,8 @@
                  <div class="shadow-8 md:shadow-2 box surface-overlay p-3 m-3 grid  review-box">
                  <h3 class="username">{{review.username}}</h3>
             
-                 <p-rating  [iconOnStyle]="{'color':'#ffab18'}" [cancel]="false" [(ngModel)]="review.rating"></p-rating>
-             
+                 <p-rating  [iconOnStyle]="{'color':'#ffab18'}" [cancel]="false" [readonly]="true" [(ngModel)]="review.rating" ></p-rating>
+                 
                  <div class="rate-btns">
                 
                     <div class="comment">{{review.comment}}</div>
