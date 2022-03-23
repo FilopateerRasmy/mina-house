@@ -25,6 +25,9 @@ import {ToastModule} from 'primeng/toast';
 import {ToolbarModule} from 'primeng/toolbar';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {DividerModule} from 'primeng/divider';
+import {TimelineModule} from 'primeng/timeline';
+
+import {StepsModule} from 'primeng/steps';
 
 @NgModule({
   declarations: [],
@@ -52,10 +55,13 @@ import {DividerModule} from 'primeng/divider';
     BadgeModule,
     SidebarModule,
     ToastModule,
-    
+    TimelineModule,
     ToolbarModule,
     SplitButtonModule,
-    DividerModule
+    DividerModule,
+
+    StepsModule,
+    
   ]
 })
 export class PrimengModule { }

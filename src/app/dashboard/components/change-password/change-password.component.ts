@@ -45,29 +45,26 @@ export class ChangePasswordComponent implements OnInit {
     this.messageService.add({severity:'success', summary: 'Success', detail: 'Data Changed Successfully'});
   }
 
-  showError() {
-    this.messageService.add({severity:'error', summary: 'Error', detail: 'Please Try Again'});
+  showError(msg:string) {
+    this.messageService.add({severity:'error', summary: 'Error', detail: msg});
   }
 
   onSubmit(){
-    console.log(this.changePassForm.value)
 
     if(this.changePassForm.value.reTypedPassword !== 
       this.changePassForm.value.newPassword){
          this.matchPasswordErr = true
          setTimeout(()=>{this.matchPasswordErr = false},3000)
-         this.showError()
+         this.showError("Passwords Don't Match")
          return}
     
   this.dashService.changeUserPass(this.changePassForm.value).subscribe({
     next:(res)=>{
-      console.log(res)
       this.showSuccess()
       setTimeout(()=>{ this.router.navigateByUrl('/customer/account/overview');},1500)
       },
     error:(err:any)=> {
-      console.log( err.error.msg) 
-      this.showError()
+      this.showError('Please Provide a valid Password')
     }
     
   })
