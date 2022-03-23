@@ -20,12 +20,7 @@ export class LayoutComponent implements OnInit {
       {status: 'Status', icon: PrimeIcons.COG, color: '#673AB7',link:'instructions'},
       {status: 'Reset', icon: PrimeIcons.CHECK, color: '#607D8B',link:'reset-password'}
   ];
-  //   this.items = [
-    
-  //     {label:'Forgot Password',routerLink: 'forgot-password',icon:'pi pi-lock'},
-  //     {label:'Status',routerLink: 'instructions'},
-  //     {label:'Reset Password',routerLink: 'reset-password'},
-  //  ]
+  
    
 
   }

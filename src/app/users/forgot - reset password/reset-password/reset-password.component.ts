@@ -40,9 +40,10 @@ export class ResetPasswordComponent implements OnInit {
     this.route.queryParamMap
   .subscribe((params) => {
     this.resetPassObjec = {  ...params };
-  }
-);
-  }
+  });
+
+  
+}
 
   getErrors(field: string) {
     return this.resetPasswordForm.get(field)?.errors;
@@ -60,9 +61,10 @@ export class ResetPasswordComponent implements OnInit {
     }
     this.auth.resetPassword(resetPasswordData).subscribe({
       next:(res)=>{
-        console.log(res)
+        
         this.showSuccess()
-        setTimeout(()=>{ this.router.navigateByUrl('/users');},1500)
+        setTimeout(()=>{ 
+          this.router.navigateByUrl('/users');},1500)
         
         },
       error:(err:any)=> {
