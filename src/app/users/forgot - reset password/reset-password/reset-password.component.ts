@@ -65,7 +65,10 @@ export class ResetPasswordComponent implements OnInit {
         setTimeout(()=>{ this.router.navigateByUrl('/users');},1500)
         
         },
-      error:(err:any)=> {this.msg = err.error.msg}
+      error:(err:any)=> {
+        this.msg = err.error.msg
+        this.showError()
+      }
       
     })
   }

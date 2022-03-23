@@ -50,7 +50,6 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.changePassForm.value)
 
     if(this.changePassForm.value.reTypedPassword !== 
       this.changePassForm.value.newPassword){
@@ -61,12 +60,11 @@ export class ChangePasswordComponent implements OnInit {
     
   this.dashService.changeUserPass(this.changePassForm.value).subscribe({
     next:(res)=>{
-      console.log(res)
       this.showSuccess()
       setTimeout(()=>{ this.router.navigateByUrl('/customer/account/overview');},1500)
       },
     error:(err:any)=> {
-      console.log( err.error.msg) 
+     
       this.showError()
     }
     

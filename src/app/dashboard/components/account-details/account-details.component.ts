@@ -48,8 +48,8 @@ showSuccess() {
   this.messageService.add({severity:'success', summary: 'Success', detail: 'Data Changed Successfully'});
 }
 
-showError() {
-  this.messageService.add({severity:'error', summary: 'Error', detail: 'Please Try Again'});
+showError(msg:string) {
+  this.messageService.add({severity:'error', summary: 'Error', detail: msg});
 }
 
 accountOverview(){
@@ -71,7 +71,7 @@ accountOverview(){
       
       
       },
-    error:(err:any)=> {console.log( err.error.msg)}
+    error:(err:any)=> {this.showError('Please Refresh The Page')}
     
   })
 }
@@ -81,18 +81,15 @@ onSubmit(){
 
       
 
-  console.log(this.accountDetailsForm.value)
   
   this.dashService.updateUser(this.accountDetailsForm.value).subscribe({
     next:(res)=>{
-      console.log(res)
       this.showSuccess()
       setTimeout(()=>{ this.router.navigateByUrl('/customer/account/overview');},1500)
 
       },
     error:(err:any)=> {
-      console.log( err.error.msg)
-      this.showError()
+      this.showError("Please Try Again")
     }
     
   })

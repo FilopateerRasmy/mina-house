@@ -39,14 +39,15 @@ showError() {
 }
 
   onSubmit(){
-    console.log(this.forgotPasswordForm.value.email)
     this.auth.forgotPassword(this.forgotPasswordForm.value).subscribe({
       next:(res)=>{
-        console.log(res )
         this.showSuccess()
       setTimeout(()=>{ this.router.navigateByUrl('/users/recover-password/instructions');},1500)
         },
-      error:(err:any)=> {this.msg = err.error.msg}
+      error:(err:any)=> {
+        this.msg = err.error.msg
+        this.showError()
+      }
       
     })
   }
