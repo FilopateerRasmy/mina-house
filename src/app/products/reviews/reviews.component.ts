@@ -38,24 +38,11 @@ export class ReviewsComponent implements OnInit  {
   uName:any
   reviewId: any;
   reviewIndex: any;
-   date = new Date();
-   today:any;
-   isActive :any;
+  
   
   
 
   ngOnInit(): void {
-
-    this.isActive = true;
-    var dd = String(this.date.getDate()).padStart(2, '0');
-    var mm = String(this.date.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = this.date.getFullYear();
-
-    this.today = mm + '/' + dd + '/' + yyyy;
-    
-    
-
-
 
     this.reviewService.getInfo()
     this.route.paramMap.subscribe((params:ParamMap) =>{
@@ -93,6 +80,7 @@ export class ReviewsComponent implements OnInit  {
          const data = JSON.parse(json)
 
           this.reviews = data.reviews;
+          
           //this.reviewsLength= this.reviews.length
           //console.log(this.reviewsLength);
           
