@@ -71,9 +71,10 @@ accountOverview(){
       
       
       },
-    error:(err:any)=> {this.showError('Please Refresh The Page')}
-    
-  })
+    error:(err:any)=> {
+      this.showError('Please Refresh The Page')
+      
+  }})
 }
 
 

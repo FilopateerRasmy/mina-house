@@ -28,7 +28,7 @@ export class ResetPasswordComponent implements OnInit {
     this.showPasswordIcon1 = !this.showPasswordIcon1;
   }
   showSuccess() {
-    this.messageService.add({severity:'success', summary: 'Success', detail: 'Email Sent Successfully'});
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'Password Changed Successfully'});
   }
   
   showError() {

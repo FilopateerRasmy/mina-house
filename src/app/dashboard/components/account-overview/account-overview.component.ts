@@ -5,7 +5,9 @@ import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-account-overview',
   templateUrl: './account-overview.component.html',
-  styleUrls: ['./account-overview.component.scss']
+  styleUrls: ['./account-overview.component.scss'],
+  providers:[MessageService]
+
 })
 export class AccountOverviewComponent implements OnInit {
 
