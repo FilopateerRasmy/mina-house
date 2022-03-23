@@ -1,25 +1,27 @@
-<div class="col-12  surface-0"> 
-    <p-toolbar class=" ">
-        <div class="flex flex-wrap ">
-            <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
-                routerLink="forgot-password" class="col cursor-pointer selection">
-                <p class="inline ml-3">forgot-password</p>
-            </a>
-            
-            <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
-                routerLink="instructions" class="col cursor-pointer selection">
-                <p class="inline ml-3">instructions</p>
-            </a>
-            
-            
-            <a  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
-                routerLink="reset-password" class="col cursor-pointer selection">
-                <p class="inline ml-3">reset-password</p>
-            </a>
-           
+<div class=" row surface-0"> 
+    <div class="col-12 p-0 surface-100">
+<!-- ----------------------- timeline ------------------------------------ -->
+        <div class="col-12 sm:col-6 sm:col-offset-3">
+                <p-timeline  [value]="events"  align="bottom" layout="horizontal" >
+                            <ng-template pTemplate="opposite" let-event >
+                                <div class="flex justify-content-start" >{{event.status}}</div>
+                            </ng-template>
+                            <ng-template pTemplate="marker" let-event>
+                                <span class="custom-marker p-shadow-2" [style.backgroundColor]="event.color">
+                                    <i [ngClass]="event.icon"></i>
+                                </span>
+                               
+                            </ng-template>
+                </p-timeline>
+                        
         </div>
-        
-        
-    </p-toolbar>
+<!-- ----------------------- stpes ------------------------------------ -->
+        <!-- <div >
+            <p-steps  [model]="items"  class="customstepper" [readonly]="false"></p-steps>
+            
+        </div> -->
+<!-- ----------------------- ends here ------------------------------------ -->
+    </div>
+
     <router-outlet></router-outlet>
 </div>

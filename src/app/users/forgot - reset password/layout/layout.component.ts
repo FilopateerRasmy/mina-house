@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PrimeIcons} from 'primeng/api';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-layout',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  route:string=''
+  constructor() { 
+    
   }
+  events: any[] = [];
+  items:MenuItem[]=[]
+  ngOnInit(): void {
+    this.events = [
+      {status: 'Forgot Password', icon: PrimeIcons.LOCK, color: '#9C27B0', link:'forgot-password'},
+      {status: 'Status', icon: PrimeIcons.COG, color: '#673AB7',link:'instructions'},
+      {status: 'Reset', icon: PrimeIcons.CHECK, color: '#607D8B',link:'reset-password'}
+  ];
+  //   this.items = [
+    
+  //     {label:'Forgot Password',routerLink: 'forgot-password',icon:'pi pi-lock'},
+  //     {label:'Status',routerLink: 'instructions'},
+  //     {label:'Reset Password',routerLink: 'reset-password'},
+  //  ]
+   
 
+  }
+  
 }
+
+
+
