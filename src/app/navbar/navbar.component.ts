@@ -11,7 +11,7 @@ import { ProductsService } from '../services/products.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection:ChangeDetectionStrategy.OnPush
+  
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   name = ''

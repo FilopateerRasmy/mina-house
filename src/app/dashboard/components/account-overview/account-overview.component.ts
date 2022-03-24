@@ -46,7 +46,7 @@ accountOverview(){
       this.city = res.user.address.city
       // we add the += as the 0 is not included so we intialize the 
       // the phone variable with 0 and then add the actual number on it
-      this.phone += (res.user.phone).toString() 
+      this.phone = res.user.phone
       this.name = res.user.name
       this.email = res.user.email
       },

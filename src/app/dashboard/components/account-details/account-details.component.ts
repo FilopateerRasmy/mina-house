@@ -3,6 +3,7 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import {MessageService} from 'primeng/api';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-account-details',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AccountDetailsComponent implements OnInit {
 
-  constructor(private fb:FormBuilder , private dashService:DashboardService, private messageService: MessageService,private router:Router) { }
+  constructor(private fb:FormBuilder , private authService:AuthService,private dashService:DashboardService, private messageService: MessageService,private router:Router) { }
   accountDetailsForm = this.fb.group({
     name: [
       '',
@@ -66,7 +67,7 @@ accountOverview(){
         },
         // we add the += as the 0 is not included so we intialize the 
         // the phone variable with 0 and then add the actual number on it
-          phone : "0"+(res.user.phone).toString() 
+          phone : res.user.phone 
       })
       
       
@@ -85,6 +86,8 @@ onSubmit(){
   
   this.dashService.updateUser(this.accountDetailsForm.value).subscribe({
     next:(res)=>{
+      this.authService.userData.name = this.accountDetailsForm.get('name')?.value
+      this.authService.isAuthanticated.next(this.authService.userData)
       this.showSuccess()
       setTimeout(()=>{ this.router.navigateByUrl('/customer/account/overview');},1500)
 

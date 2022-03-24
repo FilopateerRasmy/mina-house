@@ -46,6 +46,7 @@ showError() {
         },
       error:(err:any)=> {
         this.msg = err.error.msg
+        console.log(err.error.msg)
         this.showError()
       }
       

@@ -28,7 +28,6 @@ export class DashboardService {
     var header = {
       headers: new HttpHeaders()
         .set('Authorization',  `Bearer ${this.userToken}`)}
-
     return this.http.patch<registerData>(this.URL + "updateUser" , user, header)
   }
   
