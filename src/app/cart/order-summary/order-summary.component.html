@@ -1,0 +1,23 @@
+<div class="order-summary">
+  <h3>Order Summary</h3>
+  <!-- <div class="font-bold text-center">Free shipping on orders over 300 LE.</div> -->
+  <div class="summary-price">
+    <span>Items Price</span>
+    <span>{{ totalPrice  }}</span>
+  </div>
+  <div class="summary-price">
+    <span>Packing & Shipping</span>
+    <span class="free">Free</span>
+  </div>
+  <div class="to-checkout">
+    <div class="summary-price">
+      <span>Total Price</span>
+      <span>{{ totalPrice }}</span>
+    </div>
+    <div class="checkout-button mb-2" *ngIf="!isCheckout">
+      <p-button label="Checkout" (onClick)="navigateToCheckout()"></p-button>
+    </div>
+    <button pButton pRipple type="button" label="Continue shopping" icon="pi pi-arrow-left"
+      class="p-button-outlined mb-3" (click)="backToShop()"></button>
+  </div>
+</div>

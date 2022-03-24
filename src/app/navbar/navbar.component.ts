@@ -13,7 +13,8 @@ import { CartService } from '../services/cart.service';
 export class NavbarComponent implements OnInit, OnDestroy {
    name = ''
   display = false;
-  cartProducts!: string;
+  // cartProducts= this.cartService.cartListener;
+  totalItems = this.cartService.totalItemsListener;
   isLogin = false
   sub!: Subscription
   constructor(private cartService: CartService, private auth: AuthService) {
@@ -25,10 +26,15 @@ this.auth.isAuthanticated.subscribe((userData) =>{
   this.name = userData.name;
   this.isLogin = userData.isLogin
 })
-    this.sub = this.cartService.cartListener.subscribe(products => {
-      this.cartProducts = products.length.toString()
-      console.log(products.length.toString())
-    })
+    // this.sub = this.cartService.cartListener.subscribe(products => {
+    //   this.cartProducts = products.length.toString()
+    //   console.log(products.length.toString())
+    // })
+    
+    // this.sub = this.cartService.cartListener.subscribe(products => {
+    //   this.cartProducts = products.length.toString()
+    //   console.log(products.length.toString())
+    // })
   }
 
   ngOnDestroy(): void {

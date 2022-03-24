@@ -1,23 +1,60 @@
+import { OrderItem } from './../shared/order-item';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IProduct } from '../shared/products';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
+  totalItems: number = 0;
+  totalItemsWatcher = new BehaviorSubject(this.totalItems);
+  totalItemsListener = this.totalItemsWatcher.asObservable();
 
-cart:IProduct[] = []
-
-cartWatcher = new BehaviorSubject(this.cart);
-cartListener = this.cartWatcher.asObservable()
-
-  constructor() { }
-
-
-  addToCart(product:IProduct){
-    this.cart.push(product);
-    this.cartWatcher.next(this.cart)
-    console.log(this.cart)
+  constructor() {
+    if (this.getCartItems().length) {
+      const totalItems = this.getCartItems().reduce(
+        (a, b) => a + b.quantity,
+        0
+      );
+      this.totalItems = totalItems;
+      this.totalItemsWatcher.next(totalItems);
+    }
+  }
+  updateNav(items: OrderItem[]) {
+    this.totalItems = items.reduce((a, b) => a + b.quantity, 0);
+    this.totalItemsWatcher.next(this.totalItems);
+  }
+  incrementItems(quantity: number) {
+    this.totalItems += quantity;
+    this.totalItemsWatcher.next(this.totalItems);
+  }
+  decrementItems(quantity: number) {
+    this.totalItems -= quantity;
+    this.totalItemsWatcher.next(this.totalItems);
+  }
+  saveCartItems(cartItem: OrderItem) {
+    let cartItems: OrderItem[] = this.getCartItems();
+    const existedProduct = cartItems.find(
+      (item) => item.productId == cartItem.productId
+    );
+    if (existedProduct) {
+      const index = cartItems.indexOf(existedProduct);
+      cartItems[index].quantity += 1;
+      cartItems[index].subTotal =
+        cartItems[index].price * cartItems[index].quantity;
+    } else {
+      cartItems.push(cartItem);
+    }
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    return;
+  }
+  getCartItems(): OrderItem[] {
+    let cartItems: OrderItem[] = [];
+    const storage = localStorage.getItem('cartItems');
+    if (storage) {
+      cartItems = JSON.parse(storage);
+      return cartItems;
+    }
+    return cartItems;
   }
 }
