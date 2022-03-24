@@ -38,11 +38,8 @@ export class CartService {
       (item) => item.productId == cartItem.productId
     );
     if (existedProduct) {
-    
-      const index = cartItems.findIndex(item => item.productId  == existedProduct.productId);
-      
-       cartItems[index].quantity += cartItem.quantity ;
-  
+      const index = cartItems.indexOf(existedProduct);
+      cartItems[index].quantity += cartItem.quantity;
       cartItems[index].subTotal =
         cartItems[index].price * cartItems[index].quantity;
     } else {
