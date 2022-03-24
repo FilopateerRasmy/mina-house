@@ -16,7 +16,8 @@ import { ProductsService } from '../services/products.service';
 export class NavbarComponent implements OnInit, OnDestroy {
   name = ''
   display = false;
-  cartProducts= this.cartService.cartListener;
+  // cartProducts= this.cartService.cartListener;
+  totalItems = this.cartService.totalItemsListener;
   isLogin = false
   sub!: Subscription
   search = ''
@@ -25,10 +26,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.auth.isAuthanticated.subscribe((userData) => {
-      this.name = userData.name;
-      this.isLogin = userData.isLogin
-    })
+this.auth.isAuthanticated.subscribe((userData) =>{
+  this.name = userData.name;
+  this.isLogin = userData.isLogin
+})
+    // this.sub = this.cartService.cartListener.subscribe(products => {
+    //   this.cartProducts = products.length.toString()
+    //   console.log(products.length.toString())
+    // })
+    
     // this.sub = this.cartService.cartListener.subscribe(products => {
     //   this.cartProducts = products.length.toString()
     //   console.log(products.length.toString())
