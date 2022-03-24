@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2 class=" text-center mb-3 mt-8"  *ngIf="cartList.length==0">Your shopping cart is empty.</h2>
 <!-- <ng-container *ngIf="cartList?.length">
   <p-dataView #dv [value]=" cartList" layout="list">
@@ -9,14 +10,55 @@
             <div class="product-list-detail">
               <div class="product-name">{{product.name}}</div>
               <div class="product-description">{{product.description.slice(0,30)}}</div>
+=======
+<h2 class=" text-center mb-3 mt-8" *ngIf="storedItems.length==0">Your shopping cart is empty.</h2>
+<ng-container *ngIf="storedItems?.length">
+  <div class="grid grid-nogutter justify-content-center py-2">
+    <div class=" flex-order-2 lg:flex-order-1 col-12 lg:col-7">
+      <div *ngFor="let product of storedItems">
+        <div class="product-list-item grid justify-content-center box shadow-1 m-2">
+          <div class="product-list-img col-3"><img [src]="product.image" [alt]="product.name" class="list-img "
+              [routerLink]="['/products',product.productId]" /></div>
+
+          <div class="product-list-detail col-7 flex flex-column justify-content-evenly">
+            <div class="product-name font-bold">{{product.name|uppercase}}</div>
+            <div class="product-price font-bold">{{product.price +" LE."}}</div>
+            <div>
+              <label for="vertical" style="display: block" class="font-bold">Quantity</label>
+              <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal"
+                inputStyleClass="w-3rem" inputId="horizontal" decrementButtonClass="p-button-primary"
+                incrementButtonClass="p-button-primary" incrementButtonIcon="pi pi-plus"
+                decrementButtonIcon="pi pi-minus" [min]="1" [max]="product.countInStock" 
+                [ngModel]="product.quantity" (ngModelChange)="changeQuantity($event,product)">
+
+              </p-inputNumber>
+>>>>>>> 75efac8a3e284a72d734e39fa75761f20d01e063
             </div>
-            <div class="product-list-action">
-              <span class="product-price">${{product.price}}</span>
-              <button pButton type="button" label="Remove" class="p-button-danger" (click)="remove(product)"></button>
+            <div class="cart-item-subtotal font-bold">
+              Subtotal:
+              <span>{{
+                product.subTotal +" LE."
+                }}</span>
             </div>
           </div>
+          <div class="product-list-action col-2 flex">
+            <button pButton pRipple type="button" icon="pi pi-trash"
+              class="p-button-rounded p-button-danger p-button-text ml-auto" (click)="removeFromCart(product)"></button>
+          </div>
+
         </div>
+<<<<<<< HEAD
       </ng-template>
   </p-dataView>
 </ng-container> -->
 
+=======
+      </div>
+
+    </div>
+    <div class=" flex-order-1 lg:flex-order-2 col-8 lg:col-3 box shadow-1 h-full">
+      <app-order-summary [totalPrice]="totalPrice"></app-order-summary>
+    </div>
+  </div>
+</ng-container>
+>>>>>>> 75efac8a3e284a72d734e39fa75761f20d01e063

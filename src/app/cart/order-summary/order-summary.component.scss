@@ -1,0 +1,22 @@
+.order-summary {
+  padding: 5%;
+
+  .summary-price {
+    display: flex;
+    margin: 15px 0;
+
+    span {
+      display: block;
+      width: 80%;
+
+      &:last-child {
+        width: 20%;
+        font-weight: 600;
+      }
+
+      &.free {
+        color: rgb(79, 70, 229)
+      }
+    }
+  }
+}
