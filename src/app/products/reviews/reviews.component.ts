@@ -38,6 +38,7 @@ export class ReviewsComponent implements OnInit  {
   uName:any
   reviewId: any;
   reviewIndex: any;
+  review:any
   
   
   
@@ -86,11 +87,12 @@ export class ReviewsComponent implements OnInit  {
           
   
           ///console.log(this.reviewService.userID); //usertoken
-          for (const review of this.reviews) {
+          for (var review of this.reviews) {
             if(review.user === this.reviewService.userID )
             {
               this.reviewId = review._id
               this.reviewIndex= this.reviews.indexOf(review)
+              this.review = review
             }
             
           }
@@ -112,8 +114,9 @@ export class ReviewsComponent implements OnInit  {
    
     this.reviewService.createReview(this.reviewForm.value).subscribe({
       next: (res)=>{ 
-        console.log(res)
-        this.ngOnInit()
+        console.log(res);
+        
+        this.reviews.push(this.review)
         this.reviewForm.get('comment')?.reset()
          this.reviewForm.get('rating')?.reset()
       },
@@ -144,16 +147,10 @@ export class ReviewsComponent implements OnInit  {
   const oldComment =this.reviews[this.reviewIndex].comment;
   const oldRating = this.reviews[this.reviewIndex].rating;
    this.delete(id);
+   
   this.reviewForm.get('comment')?.patchValue(oldComment)
   this.reviewForm.get('rating')?.patchValue(oldRating)
-  let element = document.querySelector('textarea');
-  let commentPanel = document.getElementsByClassName("commentPanel")
-    if (element instanceof HTMLElement && commentPanel instanceof HTMLElement) {
-      
-        element.focus();
-        
-
-    }
+  
   }
 
 }
