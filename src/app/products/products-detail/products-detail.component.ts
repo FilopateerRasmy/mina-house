@@ -17,7 +17,7 @@ export class ProductsDetailComponent implements OnInit {
   image!: string;
   message!: boolean;
   msg = '';
-  quantity!: number;
+  quantity: number=1;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
