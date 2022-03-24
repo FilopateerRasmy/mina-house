@@ -17,7 +17,10 @@ export class ProductsDetailComponent implements OnInit {
   image!: string;
   message!: boolean;
   msg = '';
-  quantity!: number;
+  quantity: number = 1;
+
+
+  
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
@@ -48,7 +51,9 @@ export class ProductsDetailComponent implements OnInit {
       image: product.image,
       subTotal: product.price * this.quantity,
     };
+    console.log(cartItem)
     this.cartService.saveCartItems(cartItem);
+
     this.cartService.incrementItems(this.quantity);
     this.messageService.add({
       severity: 'success',
@@ -56,4 +61,5 @@ export class ProductsDetailComponent implements OnInit {
       detail: product.name,
     });
   }
+
 }

@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-<h2 class=" text-center mb-3 mt-8"  *ngIf="cartList.length==0">Your shopping cart is empty.</h2>
-<!-- <ng-container *ngIf="cartList?.length">
-  <p-dataView #dv [value]=" cartList" layout="list">
-      <ng-template let-product pTemplate="listItem">
-        <div class="col-12">
-          <div class="product-list-item ">
-            <img [src]="product.image" [alt]="product.name" class="list-img "
-              [routerLink]="['/products',product._id]" />
-            <div class="product-list-detail">
-              <div class="product-name">{{product.name}}</div>
-              <div class="product-description">{{product.description.slice(0,30)}}</div>
-=======
 <h2 class=" text-center mb-3 mt-8" *ngIf="storedItems.length==0">Your shopping cart is empty.</h2>
 <ng-container *ngIf="storedItems?.length">
   <div class="grid grid-nogutter justify-content-center py-2">
@@ -32,7 +19,6 @@
                 [ngModel]="product.quantity" (ngModelChange)="changeQuantity($event,product)">
 
               </p-inputNumber>
->>>>>>> 75efac8a3e284a72d734e39fa75761f20d01e063
             </div>
             <div class="cart-item-subtotal font-bold">
               Subtotal:
@@ -47,12 +33,6 @@
           </div>
 
         </div>
-<<<<<<< HEAD
-      </ng-template>
-  </p-dataView>
-</ng-container> -->
-
-=======
       </div>
 
     </div>
@@ -61,4 +41,3 @@
     </div>
   </div>
 </ng-container>
->>>>>>> 75efac8a3e284a72d734e39fa75761f20d01e063

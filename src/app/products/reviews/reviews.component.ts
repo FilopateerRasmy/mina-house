@@ -13,7 +13,15 @@ import { Ireview } from 'src/app/shared/reviews';
   styleUrls: ['./reviews.component.scss']
 })
 export class ReviewsComponent implements OnInit  {
+  index: number = 0;
 
+  openNext() {
+      this.index = (this.index === 2) ? 0 : this.index + 1;
+  }
+
+  openPrev() {
+      this.index = (this.index === 0) ? 2 : this.index - 1;
+  }
   product!:IProduct;
 
   reviewForm = this.fb.group({
@@ -112,10 +120,11 @@ export class ReviewsComponent implements OnInit  {
    
     this.reviewService.createReview(this.reviewForm.value).subscribe({
       next: (res)=>{ 
-        console.log(res)
-        this.ngOnInit()
         this.reviewForm.get('comment')?.reset()
          this.reviewForm.get('rating')?.reset()
+          // this.reviews.push(res.review)
+         this.ngOnInit()
+         this.openPrev()
       },
       error:(err)=>{console.log(err)}
 

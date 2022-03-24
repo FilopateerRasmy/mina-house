@@ -38,12 +38,16 @@ export class CartService {
       (item) => item.productId == cartItem.productId
     );
     if (existedProduct) {
-      const index = cartItems.indexOf(existedProduct);
-      cartItems[index].quantity += 1;
+    
+      const index = cartItems.findIndex(item => item.productId  == existedProduct.productId);
+      
+       cartItems[index].quantity += cartItem.quantity ;
+  
       cartItems[index].subTotal =
         cartItems[index].price * cartItems[index].quantity;
     } else {
       cartItems.push(cartItem);
+      
     }
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     return;

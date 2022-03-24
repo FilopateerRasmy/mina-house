@@ -1,5 +1,8 @@
-    <p-tabView>
+    <p-tabView [(activeIndex)]="index">
         <p-tabPanel header="Reviews">
+            <ng-container *ngIf="reviews?.length == 0">
+                    <span>  <button class="p-button-raised p-button-text"pButton (click)="openNext()">Be the first one to leave a review 😍😘</button></span>
+            </ng-container>
             <ng-container *ngIf="reviews?.length"  >
                 <p-dataView [value]="reviews" [paginator]="true" [rows]="5">
                  <ng-template let-review pTemplate="listItem">

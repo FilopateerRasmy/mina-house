@@ -13,7 +13,7 @@ export class ReviewsService {
   userName: any;
 
  constructor(private http:HttpClient){}
-
+reviews:Ireview[]= []
  getDecodedAccessToken(token: string): any {
   try {
     return jwt_decode(token);
@@ -36,7 +36,7 @@ getInfo(){
 }
 
  createReview(reviewData: Ireview){
-   return this.http.post(`http://localhost:3000/api/v1/reviews`,reviewData)
+   return this.http.post<{review:Ireview}>(`http://localhost:3000/api/v1/reviews`,reviewData)
  }
  getProductReviews(id:string){
    return this.http.get(`http://localhost:3000/api/v1/reviews/${id}`)
