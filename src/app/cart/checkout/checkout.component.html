@@ -5,33 +5,15 @@
 
   </div>
   <div class="grid checkout-form grid-nogutter justify-content-center">
-    <div class="col-7">
+    <div class="col-4">
+      <h1 class=" mb-5">Checkout</h1>
       <form [formGroup]="checkoutForm">
-        <div class="p-fluid p-formgrid p-grid">
-          <div class="p-field p-col-4">
-
-            <div class="p-field p-col-4">
-              <label for="phone">Phone</label><br />
-              <input formControlName="phone" id="phone" type="text" pInputText name="phone" />
-              <small *ngIf="phone.errors?.['required']&& phone.touched">Phone is required</small>
-            </div>
-          </div>
-          <div class="p-fluid p-formgrid p-grid " formGroupName="address">
-            <div class=" p-field p-col-4">
-              <label for="street">Street</label>
-              <input formControlName="street" id="street" type="text" pInputText name="street" />
-              <small *ngIf="street.errors?.['required']&& street.touched">Street is required</small>
-            </div>
-            <div class="p-field p-col-4">
-              <label for="city">City</label>
-              <input formControlName="city" id="city" type="text" pInputText name="city" />
-              <small *ngIf="city.errors?.['required']&& city.touched">City is required</small>
-            </div>
-          </div>
-        </div>
+        <app-input [controlName]="phone" label="Phone" type="text" [requiredName]="'Phone'"></app-input>
+        <app-input [controlName]="street" label="Street" type="text" [requiredName]="'Street'"></app-input>
+        <app-input [controlName]="city" label="City" type="text" [requiredName]="'City'"></app-input>
       </form>
       <div class="checkout-button">
-        <p-button label="Place Order" (onClick)="placeOrder()"></p-button>
+        <p-button label="Place Order" (onClick)="createOrder()"></p-button>
       </div>
     </div>
 

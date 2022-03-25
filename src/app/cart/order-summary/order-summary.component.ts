@@ -16,7 +16,5 @@ export class OrderSummaryComponent implements OnInit {
   navigateToCheckout() {
     this.router.navigate(['/checkout']);
   }
-  backToShop() {
-    this.router.navigate(['/products']);
-  }
+ 
 }

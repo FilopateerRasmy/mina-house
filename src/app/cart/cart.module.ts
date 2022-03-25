@@ -1,3 +1,4 @@
+import { InputComponent } from './input/input.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,7 @@ const route: Routes = [
 ];
 
 @NgModule({
-  declarations: [CartListComponent, OrderSummaryComponent, CheckoutComponent],
+  declarations: [CartListComponent, OrderSummaryComponent, CheckoutComponent,InputComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(route),
