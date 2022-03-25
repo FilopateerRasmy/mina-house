@@ -13,19 +13,19 @@
             <div class="p-field p-col-4">
               <label for="phone">Phone</label><br />
               <input formControlName="phone" id="phone" type="text" pInputText name="phone" />
-              <small *ngIf="phone.errors?.['required']&& email.touched">Phone is required</small>
+              <small *ngIf="phone.errors?.['required']&& phone.touched">Phone is required</small>
             </div>
           </div>
           <div class="p-fluid p-formgrid p-grid " formGroupName="address">
             <div class=" p-field p-col-4">
               <label for="street">Street</label>
               <input formControlName="street" id="street" type="text" pInputText name="street" />
-              <small *ngIf="street.errors?.['required']">Street is required</small>
+              <small *ngIf="street.errors?.['required']&& street.touched">Street is required</small>
             </div>
             <div class="p-field p-col-4">
               <label for="city">City</label>
               <input formControlName="city" id="city" type="text" pInputText name="city" />
-              <small *ngIf="city.errors?.['required']">City is required</small>
+              <small *ngIf="city.errors?.['required']&& city.touched">City is required</small>
             </div>
           </div>
         </div>

@@ -13,7 +13,9 @@ export class OrderSummaryComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
-  navigateToCheckout() {}
+  navigateToCheckout() {
+    this.router.navigate(['/checkout']);
+  }
   backToShop() {
     this.router.navigate(['/products']);
   }
