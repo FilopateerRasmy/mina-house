@@ -1,0 +1,39 @@
+<div class="checkout-page">
+  <div>
+    <button pButton pRipple type="button" label="Continue shopping" icon="pi pi-arrow-left"
+      class="p-button-outlined mb-3" (onClick)="backToCart()"></button>
+
+  </div>
+  <div class="grid checkout-form grid-nogutter justify-content-center">
+    <div class="col-7">
+      <form [formGroup]="checkoutForm">
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col-4">
+
+            <div class="p-field p-col-4">
+              <label for="phone">Phone</label><br />
+              <input formControlName="phone" id="phone" type="text" pInputText name="phone" />
+              <small *ngIf="phone.errors?.['required']&& email.touched">Phone is required</small>
+            </div>
+          </div>
+          <div class="p-fluid p-formgrid p-grid " formGroupName="address">
+            <div class=" p-field p-col-4">
+              <label for="street">Street</label>
+              <input formControlName="street" id="street" type="text" pInputText name="street" />
+              <small *ngIf="street.errors?.['required']">Street is required</small>
+            </div>
+            <div class="p-field p-col-4">
+              <label for="city">City</label>
+              <input formControlName="city" id="city" type="text" pInputText name="city" />
+              <small *ngIf="city.errors?.['required']">City is required</small>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="checkout-button">
+        <p-button label="Place Order" (onClick)="placeOrder()"></p-button>
+      </div>
+    </div>
+
+  </div>
+</div>
