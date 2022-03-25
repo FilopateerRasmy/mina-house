@@ -8,7 +8,6 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent {
   title = 'mina-house';
-  
   constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit() {

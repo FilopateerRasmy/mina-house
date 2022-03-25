@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
+import { ProductsService } from '../services/products.service';
 
 
 @Component({
@@ -9,16 +11,18 @@ import { CartService } from '../services/cart.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-   name = ''
+  name = ''
   display = false;
   // cartProducts= this.cartService.cartListener;
   totalItems = this.cartService.totalItemsListener;
   isLogin = false
   sub!: Subscription
-  constructor(private cartService: CartService, private auth: AuthService) {
-    this.auth.checkUser()
+  search = ''
+  constructor(private cartService: CartService, private auth: AuthService, private router: Router, private productsSearch:ProductsService) {
+    this.auth.checkUser();
   }
 
   ngOnInit(): void {
@@ -38,9 +42,11 @@ this.auth.isAuthanticated.subscribe((userData) =>{
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    // this.sub.unsubscribe()
   }
   logout() {
     this.auth.logout()
+    this.router.navigateByUrl('/')
   }
+
 }

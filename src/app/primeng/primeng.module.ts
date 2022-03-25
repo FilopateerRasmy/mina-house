@@ -21,6 +21,14 @@ import {CarouselModule} from 'primeng/carousel';
 import {BadgeModule} from 'primeng/badge';
 import {SidebarModule} from 'primeng/sidebar';
 import {ToastModule} from 'primeng/toast';
+
+import {ToolbarModule} from 'primeng/toolbar';
+import {SplitButtonModule} from 'primeng/splitbutton';
+import {DividerModule} from 'primeng/divider';
+import {TimelineModule} from 'primeng/timeline';
+
+import {StepsModule} from 'primeng/steps';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -46,7 +54,14 @@ import {ToastModule} from 'primeng/toast';
     CarouselModule,
     BadgeModule,
     SidebarModule,
-    ToastModule
+    ToastModule,
+    TimelineModule,
+    ToolbarModule,
+    SplitButtonModule,
+    DividerModule,
+
+    StepsModule,
+    
   ]
 })
 export class PrimengModule { }

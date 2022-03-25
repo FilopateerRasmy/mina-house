@@ -39,7 +39,7 @@ export class CartService {
     );
     if (existedProduct) {
       const index = cartItems.indexOf(existedProduct);
-      cartItems[index].quantity += 1;
+      cartItems[index].quantity += cartItem.quantity;
       cartItems[index].subTotal =
         cartItems[index].price * cartItems[index].quantity;
     } else {

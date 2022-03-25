@@ -16,7 +16,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./display-products.component.scss'],
   providers: [MessageService],
 })
-export class DisplayProductsComponent implements OnInit {
+export class DisplayProductsComponent implements OnInit, OnChanges {
   productName = '';
 
   constructor(
@@ -58,7 +58,7 @@ export class DisplayProductsComponent implements OnInit {
       name: product.name,
       image: product.image,
       countInStock: product.countInStock,
-      subTotal: product.price * 1
+      subTotal: product.price * 1,
     };
     this.cartService.saveCartItems(cartItem);
 

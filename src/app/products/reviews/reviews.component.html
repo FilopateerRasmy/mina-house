@@ -1,0 +1,61 @@
+    <p-tabView>
+        <p-tabPanel header="Reviews">
+            <ng-container *ngIf="reviews?.length"  >
+                <p-dataView [value]="reviews" [paginator]="true" [rows]="5">
+                 <ng-template let-review pTemplate="listItem">
+                 <div class="shadow-8 md:shadow-2 box surface-overlay p-3 m-3 grid  review-box">
+                 <h3 class="username">{{review.username}}</h3>
+            
+                 <p-rating  [iconOnStyle]="{'color':'#ffab18'}" [cancel]="false" [readonly]="true" [(ngModel)]="review.rating" ></p-rating>
+                 
+                 <div class="rate-btns">
+                
+                    <div class="comment">{{review.comment}}</div>
+                 <div class="btns" *ngIf="this.reviewId== [review._id]" >
+                 <a class="del-btn"  (click)='delete(review._id)' ><i class="pi pi-trash" style="font-size: 1rem"></i> </a>
+                 <a (click)='update(review._id)' ><i class="pi pi-pencil" style="font-size: 1rem"></i></a>
+
+               </div>
+                 
+                 </div>
+                 <p class="date">{{review.createdAt.slice(0,10) + " " + review.createdAt.slice(11,19)}}</p>
+                </div>
+             </ng-template>
+             </p-dataView>
+             </ng-container>
+        </p-tabPanel>
+
+        
+        <p-tabPanel  class="commentPanel" header="Leave a comment"  >
+            <form [formGroup]="reviewForm" (ngSubmit)="send()"  class="shadow-8 md:shadow-2 box surface-overlay p-3 m-3  form">
+                <span class="p-float-label">
+                    <textarea formControlName="comment"  id="comment"   pInputTextarea placeholder="Drop off your comment..."></textarea>
+                    <div *ngIf="reviewForm.get('comment')?.errors && reviewForm.get('comment')?.touched ">
+                        <p *ngIf="reviewForm.get('comment')?.errors?.['required']" >comment must be written</p>
+                        <p *ngIf="reviewForm.get('comment')?.errors?.['maxlength']" >maximum comment contains 100 charchter</p>
+                    </div> 
+                     
+                </span>
+              
+                <span class="p-float-label">
+                    
+                    <h4 class="rate">Rate this product</h4>
+                <div class="rate-btn">
+                <p-rating formControlName="rating"   [iconOnStyle]="{'color':'#ffab18'}" [cancel]="false"></p-rating>
+                    <div *ngIf="reviewForm.get('rating')?.errors && reviewForm.get('rating')?.touched ">
+                        <p *ngIf="reviewForm.get('rating')?.errors?.['required']" >rate must be provided</p>
+                        <p *ngIf="reviewForm.get('rating')?.errors?.['min']" >minimum rate is 1</p>
+                        <p *ngIf="reviewForm.get('rating')?.errors?.['max']" >maximum rate is 5</p>
+                    </div> 
+                    
+                    <p-button type="submit" [disabled]="reviewForm.invalid" ><i class="pi pi-send" style="font-size: 1.5rem"></i></p-button>
+                </div>
+                </span>
+                </form>
+        </p-tabPanel>
+   
+       
+    </p-tabView>
+
+ 
+  
