@@ -39,7 +39,7 @@ getInfo(){
    return this.http.post<{review:Ireview}>(`http://localhost:3000/api/v1/reviews`,reviewData)
  }
  getProductReviews(id:string){
-   return this.http.get<{reviews:Ireview}>(`http://localhost:3000/api/v1/reviews/${id}`)
+   return this.http.get<{reviews:Ireview[]}>(`http://localhost:3000/api/v1/reviews/${id}`)
  }
 
 
