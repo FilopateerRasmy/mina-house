@@ -39,12 +39,11 @@ export class ReviewsComponent implements OnInit  {
   reviewId: any;
   reviewIndex: any;
   review:any
-  
-  
-  
+ 
 
   ngOnInit(): void {
-
+ 
+  
     this.reviewService.getInfo()
     this.route.paramMap.subscribe((params:ParamMap) =>{
      
@@ -62,42 +61,21 @@ export class ReviewsComponent implements OnInit  {
       
       
       
-      
-      if(this.ProductId){
-        this.productService.getSingleProduct(this.ProductId).subscribe({
-          next: (result)=> {
-            this.product = result.product
-          },
-          error: err => this.msg = err.error.msg  
-        })
-        
-      }
+    
       ////////////////////////////////////////////
       
       if(this.ProductId){
       this.reviewService.getProductReviews(this.ProductId).subscribe({
         next:(res)=>{
-         const json = JSON.stringify(res)
-         const data = JSON.parse(json)
-
-          this.reviews = data.reviews;
+          this.userId = res.reviews.user
+          this.reviews  = res.reviews
           
           //this.reviewsLength= this.reviews.length
           //console.log(this.reviewsLength);
           
   
           ///console.log(this.reviewService.userID); //usertoken
-          for (var review of this.reviews) {
-            if(review.user === this.reviewService.userID )
-            {
-              this.reviewId = review._id
-              this.reviewIndex= this.reviews.indexOf(review)
-              this.review = review
-            }
-            
-          }
-
-  
+        
         },
         error:(err)=>{console.log(err);}
         
@@ -114,11 +92,12 @@ export class ReviewsComponent implements OnInit  {
    
     this.reviewService.createReview(this.reviewForm.value).subscribe({
       next: (res)=>{ 
-        console.log(res);
         
-        this.reviews.push(this.review)
+        this.reviewId = res.review._id
+
+        this.reviews.push(res.review)
         this.reviewForm.get('comment')?.reset()
-         this.reviewForm.get('rating')?.reset()
+        this.reviewForm.get('rating')?.reset()
       },
       error:(err)=>{console.log(err)}
 
@@ -128,28 +107,45 @@ export class ReviewsComponent implements OnInit  {
   }
 
   delete(id:string){
+  
 
-    if( this.reviewId === id){
       this.reviewService.deleteReview(this.reviewId).subscribe({
         next:(res)=>{console.log(res);
           this.reviews.splice(this.reviewIndex,1)
+          //this.delete(id)
         },
         error:(err)=>{console.log(err);}
         
       })
-    }
-    else{
-      alert("you cannot delete or update this review")
-    }
+   
   }
 
    update(id:string){
-  const oldComment =this.reviews[this.reviewIndex].comment;
-  const oldRating = this.reviews[this.reviewIndex].rating;
-   this.delete(id);
-   
-  this.reviewForm.get('comment')?.patchValue(oldComment)
-  this.reviewForm.get('rating')?.patchValue(oldRating)
+
+    for(var review of this.reviews){
+      if(review._id === this.reviewId )
+      {
+        const oldComment =review.comment;
+       const oldRating = review.rating
+       this.reviewForm.get('comment')?.patchValue(oldComment)
+       this.reviewForm.get('rating')?.patchValue(oldRating)
+      }
+    }
+   if( review._id === id){
+    this.reviewService.updateReview(review._id,this.reviewForm.value).subscribe({
+      next:(res)=>{console.log(res);
+        //console.log(this.reviews.indexOf(review));
+        
+        //this.reviews.splice(this.reviews.indexOf(review),1)
+        console.log(review._id);
+        
+        this.delete(review._id)
+      },
+      
+      error:(err)=>{console.log(err);}
+      
+    })
+  }
   
   }
 

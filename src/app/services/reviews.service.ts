@@ -36,16 +36,21 @@ getInfo(){
 }
 
  createReview(reviewData: Ireview){
-   return this.http.post(`http://localhost:3000/api/v1/reviews`,reviewData)
+   return this.http.post<{review:Ireview}>(`http://localhost:3000/api/v1/reviews`,reviewData)
  }
  getProductReviews(id:string){
-   return this.http.get(`http://localhost:3000/api/v1/reviews/${id}`)
+   return this.http.get<{reviews:Ireview}>(`http://localhost:3000/api/v1/reviews/${id}`)
  }
 
 
  deleteReview(id:string){
   return this.http.delete(`http://localhost:3000/api/v1/reviews/${id}`)
  }
+
+ updateReview(id:string,reviewData: Ireview){
+  return this.http.patch(`http://localhost:3000/api/v1/reviews/${id}`,reviewData)
+ }
+ 
 
 
  
