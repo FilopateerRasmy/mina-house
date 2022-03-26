@@ -6,5 +6,5 @@
 <app-display-products *ngIf="!msg" [products]="listOfProducts"></app-display-products>
 
 
-<h2 class="text-center mt-8" *ngIf="msg">{{msg}}</h2>
-<h2 class="text-center mt-8" *ngIf="noData">No Data To Show</h2>
+<h2 class="text-center mt-8" *ngIf="msg && !isLoading">{{msg}}</h2>
+<h2 class="text-center mt-8" *ngIf="noData && !isLoading">No Data To Show</h2>

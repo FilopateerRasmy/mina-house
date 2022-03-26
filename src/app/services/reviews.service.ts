@@ -13,7 +13,7 @@ export class ReviewsService {
   userName: any;
 
  constructor(private http:HttpClient){}
-
+reviews:Ireview[]= []
  getDecodedAccessToken(token: string): any {
   try {
     return jwt_decode(token);

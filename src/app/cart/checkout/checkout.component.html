@@ -1,0 +1,24 @@
+<p-toast position="left"></p-toast>
+<div class="checkout-page">
+  <div>
+    <button pButton pRipple type="button" label="Continue shopping" icon="pi pi-arrow-left" class="p-button-text mb-3"
+      (click)="backToCart()"></button>
+
+  </div>
+  <div class="grid checkout-form grid-nogutter justify-content-center">
+    <div class="col-4">
+      <h1 class=" mb-5 font-bold">Checkout</h1>
+      <form [formGroup]="checkoutForm">
+        <app-input [controlName]="phone" label="Phone" type="text" [requiredName]="'Phone'"></app-input>
+        <app-input [controlName]="street" label="Street" type="text" [requiredName]="'Street'"></app-input>
+        <app-input [controlName]="city" label="City" type="text" [requiredName]="'City'"></app-input>
+      </form>
+      <div class="checkout-button">
+
+        <button pButton pRipple type="button" type="submit" label="Submit" class="p-button-outline mb-3"
+          (click)="createOrder()" [disabled]="checkoutForm.invalid"></button>
+      </div>
+    </div>
+
+  </div>
+</div>
