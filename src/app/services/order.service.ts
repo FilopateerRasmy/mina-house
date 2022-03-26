@@ -25,7 +25,17 @@ export class OrderService {
       `Bearer ${this.getToken()}`
     );
     return this.http.post<{ order: Order }>(this.Url, order, {
-      headers: headers,
+      headers,
+    });
+  }
+
+  getUserOrders(): Observable<any> {
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getToken()}`
+    );
+    return this.http.get(this.Url, {
+      headers,
     });
   }
 }

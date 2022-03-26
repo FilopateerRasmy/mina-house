@@ -1,16 +1,17 @@
 import { OrderService } from './../../services/order.service';
-import { OrderItem } from './../../shared/order-item';
 import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DashboardService } from './../../services/dashboard.service';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/order';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
+  providers: [MessageService],
 })
 export class CheckoutComponent implements OnInit {
   phone = new FormControl(null, [
@@ -33,7 +34,8 @@ export class CheckoutComponent implements OnInit {
     private fb: FormBuilder,
     private userService: DashboardService,
     private cartService: CartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +67,10 @@ export class CheckoutComponent implements OnInit {
     this.orderService.createOrder(order).subscribe({
       next: (res) => {
         console.log(res);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Order has been created, hope to see you again',
+        });
       },
       error: (err) => {
         console.log(err.error.msg);

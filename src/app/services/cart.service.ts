@@ -35,7 +35,7 @@ export class CartService {
   saveCartItems(cartItem: OrderItem) {
     let cartItems: OrderItem[] = this.getCartItems();
     const existedProduct = cartItems.find(
-      (item) => item.productId == cartItem.productId
+      (item) => item.product == cartItem.product
     );
     if (existedProduct) {
       const index = cartItems.indexOf(existedProduct);

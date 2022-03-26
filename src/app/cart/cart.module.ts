@@ -23,5 +23,6 @@ const route: Routes = [
     FormsModule,
     ReactiveFormsModule,
   ],
+  
 })
 export class CartModule {}

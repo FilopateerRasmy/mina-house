@@ -1,10 +1,13 @@
 import { OrderItem } from './order-item';
 export interface Order {
-  orderItems: OrderItem[];
-  shippingAddress: {
+  orderItems: any[];
+  address: {
     street: String;
     city: string;
   };
   phone: string;
   user: string;
+  createdAt?: Date;
+  totalPrice?: number;
+  status?: string;
 }

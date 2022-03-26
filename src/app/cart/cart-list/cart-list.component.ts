@@ -30,7 +30,7 @@ export class CartListComponent implements OnInit {
   removeFromCart(product: OrderItem) {
     let cartItems: OrderItem[] = this.cartService.getCartItems();
     const productIndex = cartItems.findIndex(
-      (item) => item.productId == product.productId
+      (item) => item.product == product.product
     );
     cartItems.splice(productIndex, 1);
     this.storedItems = cartItems;
@@ -44,7 +44,7 @@ export class CartListComponent implements OnInit {
     console.log(storage);
 
     const productIndex = storage.findIndex(
-      (item) => item.productId == product.productId
+      (item) => item.product == product.product
     );
     console.log(productIndex);
     console.log(product);
