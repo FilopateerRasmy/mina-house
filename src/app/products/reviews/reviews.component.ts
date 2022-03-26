@@ -40,15 +40,7 @@ export class ReviewsComponent implements OnInit  {
   userId = '';
   uName:any;
 
-  index: number = 0;
 
-  openNext() {
-      this.index = (this.index === 2) ? 0 : this.index + 1;
-  }
-
-  openPrev() {
-    this.index = (this.index === 0) ? 2 : this.index - 1;
-}
      
 
 
@@ -122,10 +114,10 @@ export class ReviewsComponent implements OnInit  {
       this.reviewService.deleteReview(id).subscribe({
         next:(res)=>{console.log(res);
           const index = this.reviews.findIndex((item:Ireview) => item._id === id);
-          console.log(index)
+          //console.log(index)
           this.reviews.splice(index,1)
           this.reviews = [...this.reviews]
-          //this.delete(id)
+         
         },
         error:(err)=>{console.log(err);}
         
