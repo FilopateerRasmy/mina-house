@@ -45,7 +45,7 @@ export class ProductsDetailComponent implements OnInit {
   }
   cart(product: IProduct) {
     const cartItem: OrderItem = {
-      productId: product._id,
+      product: product._id,
       quantity: this.quantity,
       price: product.price,
       countInStock: product.countInStock,

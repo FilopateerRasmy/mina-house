@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { OrderItem } from './../../shared/order-item';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
@@ -11,7 +12,7 @@ export class CartListComponent implements OnInit {
   storedItems: OrderItem[] = [];
   totalPrice?: number;
   quantity: number = 1;
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.calcTotalPrice();
@@ -29,7 +30,7 @@ export class CartListComponent implements OnInit {
   removeFromCart(product: OrderItem) {
     let cartItems: OrderItem[] = this.cartService.getCartItems();
     const productIndex = cartItems.findIndex(
-      (item) => item.productId == product.productId
+      (item) => item.product == product.product
     );
     cartItems.splice(productIndex, 1);
     this.storedItems = cartItems;
@@ -43,7 +44,7 @@ export class CartListComponent implements OnInit {
     console.log(storage);
 
     const productIndex = storage.findIndex(
-      (item) => item.productId == product.productId
+      (item) => item.product == product.product
     );
     console.log(productIndex);
     console.log(product);
@@ -53,5 +54,8 @@ export class CartListComponent implements OnInit {
     localStorage.setItem('cartItems', JSON.stringify(this.storedItems));
     this.calcTotalPrice();
     this.cartService.updateNav(this.storedItems);
+  }
+  backToShop() {
+    this.router.navigate(['/products']);
   }
 }

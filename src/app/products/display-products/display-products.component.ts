@@ -52,7 +52,7 @@ export class DisplayProductsComponent implements OnInit, OnChanges {
 
   cart(product: IProduct) {
     const cartItem: OrderItem = {
-      productId: product._id,
+      product: product._id,
       quantity: 1,
       price: product.price,
       name: product.name,
