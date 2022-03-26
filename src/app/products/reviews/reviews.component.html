@@ -14,11 +14,11 @@
                  <div class="rate-btns">
                 
                     <div class="comment">{{review.comment}}</div>
-                 <div class="btns" *ngIf="this.reviewId== [review._id]" >
-                 <a class="del-btn"  (click)='delete(review._id)' ><i class="pi pi-trash" style="font-size: 1rem"></i> </a>
-                 <a (click)='update(review._id)' ><i class="pi pi-pencil" style="font-size: 1rem"></i></a>
-
-               </div>
+                    <div class="btns" *ngIf="userId == review.user" >
+                    <a class="del-btn cursor-pointer"  (click)='delete(review._id)' ><i class="pi pi-trash" style="font-size: 1rem"></i> </a>
+                    <!-- <a class="cursor-pointer" (click)='update(review._id,review)' ><i class="pi pi-pencil" style="font-size: 1rem"></i></a> -->
+   
+                  </div>
                  
                  </div>
                  <p class="date">{{review.createdAt.slice(0,10) + " " + review.createdAt.slice(11,19)}}</p>
