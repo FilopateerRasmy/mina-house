@@ -71,6 +71,8 @@ export class CheckoutComponent implements OnInit {
           severity: 'success',
           summary: 'Order has been created, hope to see you again',
         });
+        localStorage.removeItem('cartItems');
+        this.cartService.updateNav([]);
       },
       error: (err) => {
         console.log(err.error.msg);

@@ -34,7 +34,7 @@ export class OrderService {
       'Authorization',
       `Bearer ${this.getToken()}`
     );
-    return this.http.get(`${this.Url}/history`, {
+    return this.http.get(this.Url+"/history", {
       headers,
     });
   }
