@@ -127,23 +127,24 @@ export class ReviewsComponent implements OnInit  {
    
   }
 
-  //update(id:string,review:Ireview){
+  update(id:string,review:Ireview){
 
-  // this.openNext();
+   this.openNext();
 
-  // this.reviewForm.patchValue({rating:review.rating,comment:review.comment})
+ this.reviewForm.patchValue({rating:review.rating,comment:review.comment})
 
-  //   this.reviewService.updateReview(id,this.reviewForm.value).subscribe({
-  //     next:(res)=>{
+  this.reviewService.updateReview(id,this.reviewForm.value).subscribe({
+    next:(res)=>{
        
-  //       console.log(res)
-       
-  //     },
+      console.log(res)
+      this.delete(id)
+
+    },
       
-  //     error:(err)=>{console.log(err);}
-      
-  //   })
-  // }
+       error:(err)=>{console.log(err);}
+    
+     })
+  }
   
   }
 
