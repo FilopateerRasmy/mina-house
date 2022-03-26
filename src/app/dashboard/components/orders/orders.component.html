@@ -1,4 +1,5 @@
 <h2 class=" text-center mb-3 mt-8" *ngIf="orders?.length==0">Your haven't any orders yet.</h2>
+<h2 class=" text-center mb-3 mt-8" *ngIf="alertMsg && !isLoading">{{alertMsg}}</h2>
 <div class="absolute top-50 left-50 translate-x-50 translate-y-50" *ngIf="isLoading">
   <p-progressSpinner [style]="{width: '100px', height: '80px'}" styleClass="custom-spinner " strokeWidth="4"
     fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>

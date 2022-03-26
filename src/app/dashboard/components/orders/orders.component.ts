@@ -9,6 +9,7 @@ import { Order } from 'src/app/shared/order';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
+  alertMsg='';
   constructor(
     private orderService: OrderService,
     private cartService: CartService
@@ -18,10 +19,14 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getUserOrders().subscribe({
       next: (orders) => {
-        this.orders = orders;
         console.log(orders);
+        this.orders = orders;
         this.isLoading = false;
       },
+      error:err=>{
+        this.isLoading = false
+        this.alertMsg = err.error.msg
+      }
     });
   }
 }
