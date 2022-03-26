@@ -38,4 +38,8 @@
 </ng-container>
 
 <app-reviews></app-reviews>
-<h2 class="text-center mt-8" *ngIf="msg">{{msg}}</h2>
+<div class="absolute top-50 left-50 translate-x-50 translate-y-50" *ngIf="isLoading">
+  <p-progressSpinner [style]="{width: '100px', height: '80px'}" styleClass="custom-spinner " strokeWidth="4"
+    fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+</div>
+<h2 class="text-center mt-8" *ngIf="msg && !isLoading">{{msg}}</h2>

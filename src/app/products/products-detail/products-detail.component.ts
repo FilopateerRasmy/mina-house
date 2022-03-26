@@ -17,13 +17,14 @@ export class ProductsDetailComponent implements OnInit {
   image!: string;
   message!: boolean;
   msg = '';
-  quantity: number=1;
+  quantity: number = 1;
+  isLoading = true;
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
     private messageService: MessageService,
     private cartService: CartService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -31,9 +32,13 @@ export class ProductsDetailComponent implements OnInit {
       if (id) {
         this.productService.getSingleProduct(id).subscribe({
           next: (result) => {
+            this.isLoading = false;
             this.product = result.product;
           },
-          error: (err) => (this.msg = err.error.msg),
+          error: (err) => {
+            this.isLoading = false;
+            this.msg = err.error.msg;
+          },
         });
       }
     });

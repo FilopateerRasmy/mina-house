@@ -22,8 +22,8 @@ msg = ''
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4)]],
     address: this.fb.group({
-      street: ['',Validators.required],
-      city: ['' ,Validators.required],
+      street: ['',[Validators.required]],
+      city: ['' ,[Validators.required]],
     }),
     phone: ['', [Validators.required, Validators.minLength(11),Validators.maxLength(11)]],
   });

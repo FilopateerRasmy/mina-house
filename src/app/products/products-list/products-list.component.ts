@@ -28,7 +28,7 @@ ngOnInit(): void {
         },
         error: error => {
           this.isLoading = false;
-          this.msg = error.message
+          this.msg = error.error.msg || error.message
         }
       })
     }else{
