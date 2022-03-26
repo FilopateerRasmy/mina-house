@@ -1,0 +1,12 @@
+   <div class="field mb-5">
+     <span class="p-float-label">
+       <input [type]="type" class="inputfield w-full" pInputText [formControl]="controlName">
+       <label for="float-input">{{label}}</label>
+     </span>
+
+     <ng-container *ngIf="controlName.errors && controlName.touched">
+       <p class="my-2" *ngIf="geterror('required')">{{requiredName || 'This field'}} is required</p>
+       <p class="my-2" *ngIf="geterror('email')">Enter Valid Email </p>
+     </ng-container>
+
+   </div>

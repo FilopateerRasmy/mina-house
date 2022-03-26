@@ -1,32 +1,45 @@
 <ng-container *ngIf="product">
   <div class="scalein animation-duration-300 font-bold ">
-    <div class="card grid m-3">
+    <div class="card grid m-3 justify-content-center ">
 
-     <div class=" md:col-4">
-      <img class="border-round w-full"  [src]="product.image" alt="{{product.name}}">
-     </div>
-     <p-toast position="top-right"></p-toast>
-      <div class=" md:col-8">
-        <h2 class="mb-3" >{{product.name}}</h2>
+      <div class=" sm:col-12 lg:col-5 ">
+        <img class="border-round w-full" [src]="product.image" alt="{{product.name}}">
+      </div>
+      <p-toast position="top-left"></p-toast>
+      <!-- col-offset-1 -->
+      <div class="product-details col:12 lg:col-4 m-3">
+        <h2 class="mb-2">{{product.name|uppercase}}</h2>
         <p>{{product.description}}</p>
         <p>Price: {{product.price}} LE</p>
-        <p *ngIf="product.countInStock==0" class=" p-1 font-bold">OUTOFSTOCK
+        <p *ngIf="product.countInStock==0" class=" font-bold">OUTOFSTOCK
         </p>
-   
-        <p *ngIf="product.countInStock!==0" class="p-1 font-bold">INSTOCK</p>
+        <p *ngIf="product.countInStock!==0" class=" font-bold">INSTOCK</p>
+        <div class="my-3">
+          <label for="quantity">Quantity</label>
+          <p-inputNumber class="w-full mt-2" [(ngModel)]="quantity"  mode="decimal" [showButtons]="true"
+            inputId="quantity" [min]="1" [max]="product.countInStock">
+          </p-inputNumber>
+          <!-- option2 -->
+          <!-- <p-inputNumber [showButtons]="true" buttonLayout="horizontal" spinnerMode="horizontal"
+              decrementButtonClass="p-button-primary" incrementButtonClass="p-button-primary"
+              incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" mode="decimal" inputId="quantity"
+              [min]="1" [max]="product.countInStock"></p-inputNumber> -->
+        </div>
         <p-button [disabled]="product.countInStock === 0" (onClick)="cart(product)"> Add to cart
         </p-button>
 
-        
 
-        
+
+
       </div>
 
     </div>
   </div>
 </ng-container>
- 
 
 <app-reviews></app-reviews>
-<h2 class="text-center mt-8" *ngIf="msg">{{msg}}</h2>
-
+<div class="absolute top-50 left-50 translate-x-50 translate-y-50" *ngIf="isLoading">
+  <p-progressSpinner [style]="{width: '100px', height: '80px'}" styleClass="custom-spinner " strokeWidth="4"
+    fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+</div>
+<h2 class="text-center mt-8" *ngIf="msg && !isLoading">{{msg}}</h2>

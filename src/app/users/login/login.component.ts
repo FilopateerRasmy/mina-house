@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required],
   })
   ngOnInit(): void {
-    // console.log(this.loginForm.value)
   }
   getErrors(field: string) {
     return this.loginForm.get(field)?.errors;

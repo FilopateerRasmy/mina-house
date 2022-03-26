@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { IresetPassword } from '../shared/IresetPassword';
 import { User } from '../shared/user';
 
 @Injectable({
@@ -32,6 +33,15 @@ export class AuthService {
     return this.http.post<User>(this.URL + 'login', userData);
   }
 
+  forgotPassword(email:any){
+    return this.http.post<any>(this.URL + 'forgot-password', email)
+  }
+
+  resetPassword(resetPassword:IresetPassword){
+    return this.http.post<any>(this.URL + 'reset-password', resetPassword);
+  }
+
+  
 
   saveUser(token:string, name:string){
     this.userData.isLogin = true;
@@ -60,4 +70,6 @@ export class AuthService {
       this.userData.token = '';
       this.isAuthanticated.next(this.userData)
     }
+
+    
 }

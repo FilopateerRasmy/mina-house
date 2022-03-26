@@ -25,11 +25,9 @@ export class DashboardService {
   }
 
   updateUser( user:registerData  ){
-    console.log(user)
     var header = {
       headers: new HttpHeaders()
         .set('Authorization',  `Bearer ${this.userToken}`)}
-
     return this.http.patch<registerData>(this.URL + "updateUser" , user, header)
   }
   
@@ -53,10 +51,7 @@ export class DashboardService {
   }
   getUserID(){
     this.getToken()
-    console.log(this.userToken)
     const  tokenInfo = this.getDecodedAccessToken(  this.userToken ); // decode token
     this.userID = tokenInfo.userId
-    // console.log(this.userID)
-    // return this.userID
   }
 }
