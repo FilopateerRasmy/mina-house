@@ -1,15 +1,27 @@
-
-
-.p-badge{
-    background-color: rgba(255, 0, 0, 0.664);
+.p-badge {
+  background-color: rgba(255, 0, 0, 0.664);
 }
 
-.active{
-   background-color:  #6366F1;
-   color: white ;
+.active {
+  background-color: #6366F1;
+  color: white;
 }
-a > img {
-   height: 50px;
-   width: 50px;
-    object-fit: cover;
+
+a>img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
+p-sidebar {
+  ul {
+    :hover {
+      transition: 1s;
+      background-color: lightgray;
+      color: black;
+    }
+    li {
+      padding: 15px;
+    }
+  }
 }

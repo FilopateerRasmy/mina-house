@@ -1,21 +1,11 @@
-<div class="grid w-full">
-  <div class="lg:col-7 fadeindown animation-duration-1000">
-    <img
-      class="w-full"
-      style="height: 540px"
+<div class="grid  grid-nogutter justify-content-center mt-3">
+  <div class="hidden lg:block lg:col-7 fadeindown animation-duration-1000">
+    <img class="w-full" style="height: 540px"
       src="https://images.pexels.com/photos/1693027/pexels-photo-1693027.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
+      alt="" />
   </div>
-  <form
-    class="lg:col-4 fadeinup animation-duration-1000"
-    (ngSubmit)="onRegister()"
-    [formGroup]="registerForm"
-  >
-    <p
-      class="login-text mb-3"
-      style="font-size: 3rem; font-weight: 300; font-style: italic"
-    >
+  <form class="lg:col-4 fadeinup animation-duration-1000 pl-3" (ngSubmit)="onRegister()" [formGroup]="registerForm">
+    <p class="login-text mb-3" style="font-size: 3rem; font-weight: 300; font-style: italic">
       Sign Up
     </p>
     <div class="form-group w-20rem mb-4">
@@ -37,12 +27,7 @@
     </div>
     <div class="form-group w-20rem mb-4">
       <span class="p-float-label">
-        <input
-          id="float-input"
-          type="email"
-          pInputText
-          formControlName="email"
-        />
+        <input id="float-input" type="email" pInputText formControlName="email" />
         <label for="float-input">Email</label>
       </span>
       <div *ngIf="getErrors('email') && getField('email')?.touched">
@@ -67,12 +52,7 @@
     <div formGroupName="address">
       <div class="form-group w-20rem mb-4">
         <span class="p-float-label">
-          <input
-            id="float-input"
-            type="text"
-            pInputText
-            formControlName="street"
-          />
+          <input id="float-input" type="text" pInputText formControlName="street" />
           <label for="float-input">Street</label>
         </span>
         <div *ngIf="getErrors('street') && getField('street')?.touched">
@@ -84,12 +64,7 @@
 
       <div class="form-group w-20rem mb-4">
         <span class="p-float-label">
-          <input
-            id="float-input"
-            type="text"
-            pInputText
-            formControlName="city"
-          />
+          <input id="float-input" type="text" pInputText formControlName="city" />
           <label for="float-input">City</label>
         </span>
         <div *ngIf="getErrors('city') && getField('city')?.touched">
@@ -100,12 +75,7 @@
 
     <div class="form-group w-20rem mb-4">
       <span class="p-float-label w-full">
-        <input
-          id="float-input"
-          type="text"
-          pInputText
-          formControlName="phone"
-        />
+        <input id="float-input" type="text" pInputText formControlName="phone" />
         <label for="float-input">Phone</label>
       </span>
       <div *ngIf="getErrors('phone') && getField('phone')?.touched">
@@ -120,14 +90,8 @@
     </div>
     <h2 [style.color]="'red'" class="mb-3" If="msg">{{msg}}</h2>
     <div class="form-group w-20rem">
-      <button
-        pButton
-        pRipple
-        type="submit"
-        [disabled]="registerForm.invalid"
-        label="Register"
-        class="p-button-rounded justify-content-center"
-      ></button>
+      <button pButton pRipple type="submit" [disabled]="registerForm.invalid" label="Register"
+        class="p-button-rounded justify-content-center"></button>
     </div>
   </form>
 </div>
