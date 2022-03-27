@@ -6,7 +6,7 @@
 
   </div>
   <div class="grid checkout-form grid-nogutter justify-content-center">
-    <div class="col-4">
+    <div class="col-4 box shadow-4 p-4">
       <h1 class=" mb-5 font-bold">Checkout</h1>
       <form [formGroup]="checkoutForm">
         <app-input [controlName]="phone" label="Phone" type="text" [requiredName]="'Phone'"></app-input>
@@ -14,10 +14,10 @@
         <app-input [controlName]="city" label="City" type="text" [requiredName]="'City'"></app-input>
       </form>
       <div class="checkout-button">
-
         <button pButton pRipple type="button" type="submit" label="Submit" class="p-button-outline mb-3"
           (click)="createOrder()" [disabled]="checkoutForm.invalid"></button>
       </div>
+      <span class="font-bold">Delivery: Within 3-8 working days</span>
     </div>
 
   </div>

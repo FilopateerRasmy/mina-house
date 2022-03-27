@@ -2,11 +2,9 @@
   class="shadow-1 flex w-full  justify-content-between align-items-center py-2 nav px-3 fadein animation-duration-1000   ">
   <a routerLink="/">
     <img src="../../assets/WhatsApp Image 2022-02-22 at 7.08.19 PM.jpeg" alt="logo">
-
   </a>
-
-
-  <ul class="flex list-none">
+  
+  <ul class="flex list-none ">
     <li class="mr-1 p-2 hidden lg:block transition-colors transition-duration-500 hover:surface-300 border-round"
       routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
       <a routerLink="/"> Home</a>
@@ -29,9 +27,6 @@
         class="mr-1 p-2 hidden lg:block transition-colors cursor-pointer transition-duration-500 hover:surface-300 border-round">
         <a routerLink="customer/account/overview">Welcome {{name | titlecase}}</a></li>
     </ng-container>
-
-
-
     <li class="p-2 hidden lg:block">
       <a routerLink="/cart"> <i class="pi pi-shopping-cart mr-4" pBadge style="font-size: 1.3rem"
           [value]="(totalItems| async) + ''"></i>
@@ -42,15 +37,30 @@
   </ul>
 </nav>
 
-
 <p-sidebar [(visible)]="display" position="right" styleClass="p-sidebar-sm" [style]="{'text-align':'center'}">
-  Content
+  <h1 *ngIf="isLogin" class="mb-2">Welcome {{name | titlecase}}</h1>
   <ul class="list-none">
-    <li>Home</li>
-    <li>products</li>
-    <li>Sign up</li>
-    <li>Login</li>
-    <li>
-    </li>
+    <a *ngIf="isLogin" routerLink="customer/account/overview">
+      <li>PROFILE</li>
+    </a>
+    <a routerLink="/">
+      <li>HOME</li>
+    </a>
+    <a routerLink="/products">
+      <li>PRODUCTS</li>
+    </a>
+    <ng-container *ngIf="!isLogin">
+      <a routerLink="/users/register">
+        <li>SIGNUP</li>
+      </a>
+      <a routerLink="/users">
+        <li>LOGIN</li>
+      </a></ng-container>
+    <a routerLink="/cart">
+      <li><i class="pi pi-shopping-cart mr-4" style="font-size: 1.2rem"></i>MY CART</li>
+    </a>
+    <a *ngIf="isLogin" routerLink="/">
+      <li class="cursor-pointer" (click)="logout()">LOGOUT</li>
+    </a>
   </ul>
 </p-sidebar>
