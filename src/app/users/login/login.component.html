@@ -1,30 +1,17 @@
-<div class="grid w-full">
-  <div class="lg:col-7 fadeindown animation-duration-1000">
-    <img
-      class="w-full"
+<div class="grid grid-nogutter justify-content-center mt-3">
+  <div class="hidden lg:block lg:col-7 fadeindown animation-duration-1000">
+    <img class="w-full"
       src="https://images.pexels.com/photos/2878736/pexels-photo-2878736.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-      alt=""
-    />
+      alt="" />
   </div>
-  <form
-    class="login-email lg:col-4 fadeinup animation-duration-1000 mt-5"
-    [formGroup]="loginForm"
-    (ngSubmit)="onLogin()"
-  >
-    <p
-      class="login-text mt-4"
-      style="font-size: 3rem; font-weight: 500; font-style: italic"
-    >
+  <form class="login-email lg:col-4 fadeinup animation-duration-1000 pl-3" [formGroup]="loginForm"
+    (ngSubmit)="onLogin()">
+    <p class="login-text mt-4" style="font-size: 3rem; font-weight: 500; font-style: italic">
       Login
     </p>
     <div class="form-group my-4">
       <span class="p-float-label">
-        <input
-          id="float-input"
-          type="email"
-          pInputText
-          formControlName="email"
-        />
+        <input id="float-input" type="email" pInputText formControlName="email" />
         <label for="float-input">example@gmail.com</label>
       </span>
       <div *ngIf="getErrors('email') && getField('email')?.touched">
@@ -35,11 +22,7 @@
       </div>
     </div>
     <div class="form-group my-4">
-      <p-password
-        formControlName="password"
-        placeholder="Password"
-        [toggleMask]="true"
-      ></p-password>
+      <p-password formControlName="password" placeholder="Password" [toggleMask]="true"></p-password>
       <div *ngIf="getErrors('password') && getField('password')?.touched">
         <p *ngIf="getErrors('password')?.['required']">
           please enter a password
@@ -48,14 +31,8 @@
     </div>
     <h2 [style.color]="'red'" class="mb-3" If="msg">{{msg}}</h2>
     <div class="form-group flex">
-      <button
-        pButton
-        pRipple
-        type="submit"
-        [disabled]="loginForm.invalid"
-        label="Login"
-        class="p-button-rounded pl-3"
-      ></button>
+      <button pButton pRipple type="submit" [disabled]="loginForm.invalid" label="Login"
+        class="p-button-rounded pl-3"></button>
       <div class='m-3'><a routerLink='recover-password/forgot-password'>Forgot your password?</a></div>
     </div>
   </form>
