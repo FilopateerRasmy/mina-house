@@ -7,6 +7,8 @@
      <ng-container *ngIf="controlName.errors && controlName.touched">
        <p class="my-2" *ngIf="geterror('required')">{{requiredName || 'This field'}} is required</p>
        <p class="my-2" *ngIf="geterror('email')">Enter Valid Email </p>
+       <p class="my-2" *ngIf="geterror('pattern')">Enter Valid Phone </p>
+
      </ng-container>
 
    </div>
