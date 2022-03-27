@@ -27,7 +27,7 @@
               class="product-category">{{product.category.name}}</span>
           </div>
           <div class="product-list-action">
-            <span class="product-price">${{product.price}}</span>
+            <span class="product-price">{{product.price + ' LE'}}</span>
             <p-button icon="pi pi-shopping-cart" label="Add to Cart" [disabled]="product.countInStock === 0"
               (onClick)="cart(product)"></p-button>
             <span *ngIf="product.countInStock==0" class="outofstock p-1 font-bold">OUTOFSTOCK</span>
@@ -56,7 +56,7 @@
             <a>reviews</a>
           </div>
           <div class="product-grid-item-bottom">
-            <span class="product-price">${{product.price}}</span>
+            <span class="product-price">{{product.price + ' LE'}}</span>
             <p-button icon="pi pi-shopping-cart" [disabled]="product.countInStock === 0" (onClick)="cart(product)">
             </p-button>
           </div>
