@@ -41,12 +41,13 @@ export class CartListComponent implements OnInit {
   changeQuantity(e: any, product: OrderItem) {
     this.quantity = Number(e);
     const storage = this.cartService.getCartItems();
-   
+    // console.log(storage);
 
     const productIndex = storage.findIndex(
       (item) => item.product == product.product
     );
-    
+    // console.log(productIndex);
+    // console.log(product);
 
     this.storedItems[productIndex].quantity = Number(e);
     this.storedItems[productIndex].subTotal = Number(e) * product.price;

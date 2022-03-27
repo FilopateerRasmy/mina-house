@@ -16,8 +16,7 @@ import { MessageService } from 'primeng/api';
 export class CheckoutComponent implements OnInit {
   phone = new FormControl(null, [
     Validators.required,
-    Validators.minLength(11),
-    Validators.maxLength(11),
+    Validators.pattern(/^01[0|1|2|5][0-9]{8}$/),
   ]);
   street = new FormControl('', [Validators.required]);
   city = new FormControl('', [Validators.required]);
