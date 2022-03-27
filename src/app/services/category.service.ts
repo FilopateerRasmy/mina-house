@@ -13,6 +13,6 @@ export class CategoryService {
 
 
   getAllCategories():Observable<ICategory[]>{
-    return this.http.get<ICategory[]>('http://localhost:3000/api/v1/categories')
+    return this.http.get<ICategory[]>('https://mina-house.herokuapp.com/api/v1/categories')
   }
 }

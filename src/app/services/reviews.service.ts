@@ -23,32 +23,35 @@ reviews:Ireview[]= []
 }
 getToken(){
   const user:any  = localStorage.getItem('user')
-  this.userToken = JSON.parse(user).token
+  this.userToken = JSON.parse(user)?.token
 }
 getInfo(){
   this.getToken()
   //console.log(this.userToken)
   const  tokenInfo = this.getDecodedAccessToken(  this.userToken ); // decode token
-  this.userID = tokenInfo.userId
-  this.userName = tokenInfo.name
+  if(this.userToken){
+    this.userID = tokenInfo.userId
+    this.userName = tokenInfo.name
+  }
+ 
   // console.log(this.userID)
   // return this.userID
 }
 
  createReview(reviewData: Ireview){
-   return this.http.post<{review:Ireview}>(`http://localhost:3000/api/v1/reviews`,reviewData)
+   return this.http.post<{review:Ireview}>(`https://mina-house.herokuapp.com/api/v1/reviews`,reviewData)
  }
  getProductReviews(id:string){
-   return this.http.get<{reviews:Ireview[]}>(`http://localhost:3000/api/v1/reviews/${id}`)
+   return this.http.get<{reviews:Ireview[]}>(`https://mina-house.herokuapp.com/api/v1/reviews/${id}`)
  }
 
 
  deleteReview(id:string){
-  return this.http.delete(`http://localhost:3000/api/v1/reviews/${id}`)
+  return this.http.delete(`https://mina-house.herokuapp.com/api/v1/reviews/${id}`)
  }
 
  updateReview(id:string,reviewData: Ireview){
-  return this.http.patch(`http://localhost:3000/api/v1/reviews/${id}`,reviewData)
+  return this.http.patch(`https://mina-house.herokuapp.com/api/v1/reviews/${id}`,reviewData)
  }
  
 

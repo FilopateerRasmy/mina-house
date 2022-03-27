@@ -12,7 +12,7 @@ import { Password } from '../shared/passwordFormInterface';
 export class DashboardService {
 
   constructor(private http:HttpClient) { }
-  URL:string = 'http://localhost:3000/api/v1/users/'
+  URL:string = 'https://mina-house.herokuapp.com/api/v1/users/'
   userToken:string='';
   userID:string='';
 

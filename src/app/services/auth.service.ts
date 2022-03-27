@@ -23,7 +23,7 @@ export class AuthService {
 
 
   constructor(private http:HttpClient, private router:Router) { }
-  URL:string = 'http://localhost:3000/api/v1/auth/'
+  URL:string = 'https://mina-house.herokuapp.com/api/v1/auth/'
 
   register (registerInfo:any){
     return this.http.post<User>(this.URL + 'register',registerInfo);
