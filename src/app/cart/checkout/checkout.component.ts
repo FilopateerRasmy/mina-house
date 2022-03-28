@@ -72,9 +72,9 @@ export class CheckoutComponent implements OnInit {
         });
         localStorage.removeItem('cartItems');
         this.cartService.updateNav([]);
-        setTimeout(()=>{
+        setTimeout(() => {
           this.router.navigate(['/']);
-        },500)
+        }, 500);
       },
       error: (err) => {
         console.log(err.error.msg);
