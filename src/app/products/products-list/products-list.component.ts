@@ -35,6 +35,9 @@ ngOnInit(): void {
       this.productService.getAllProducts().subscribe({
         next: (result) =>{
           this.listOfProducts = result.products
+        }, error: error => {
+          this.isLoading = false;
+          this.msg = error.error.msg || error.message
         }
       })
     }
