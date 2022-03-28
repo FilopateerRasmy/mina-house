@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {user} from '../shared/dashboard-userInterface'
 import jwt_decode from 'jwt-decode';
-import { AuthService } from './auth.service';
 import { registerData } from '../shared/registerInterface';
 import { Password } from '../shared/passwordFormInterface';
 
@@ -12,7 +11,7 @@ import { Password } from '../shared/passwordFormInterface';
 export class DashboardService {
 
   constructor(private http:HttpClient) { }
-  URL:string = 'https://mina-house.herokuapp.com/api/v1/users/'
+  URL:string = 'https://mina-house-api.herokuapp.com/api/v1/users/';
   userToken:string='';
   userID:string='';
 

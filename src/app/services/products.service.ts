@@ -12,18 +12,18 @@ export class ProductsService {
 
   
 getProductsWithCategories(id:string):Observable<{products:IProduct[]; numOfPages:number}>{
-  return this.http.get<{products:IProduct[]; numOfPages:number}>(`https://mina-house.herokuapp.com/api/v1/products?category=${id}`)
+  return this.http.get<{products:IProduct[]; numOfPages:number}>(`https://mina-house-api.herokuapp.com/api/v1/products?category=${id}`)
 }
 
 getAllProducts():Observable<{products:IProduct[]; numOfPages:number}>{
-  return this.http.get<{products:IProduct[]; numOfPages:number}>(`https://mina-house.herokuapp.com/api/v1/products`)
+  return this.http.get<{products:IProduct[]; numOfPages:number}>(`https://mina-house-api.herokuapp.com/api/v1/products`)
 }
 getAllProductsWithSearch(name:string):Observable<{products:IProduct[]; numOfPages:number}>{
-  return this.http.get<{products:IProduct[]; numOfPages:number}>(`https://mina-house.herokuapp.com/api/v1/products?name=${name}`)
+  return this.http.get<{products:IProduct[]; numOfPages:number}>(`https://mina-house-api.herokuapp.com/api/v1/products?name=${name}`)
 }
 
 getSingleProduct(id:string){
-  return this.http.get<{product:IProduct}>(`https://mina-house.herokuapp.com/api/v1/products/${id}`)
+  return this.http.get<{product:IProduct}>(`https://mina-house-api.herokuapp.com/api/v1/products/${id}`)
 }
 
 }

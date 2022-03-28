@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class OrderService {
-  Url = 'https://mina-house.herokuapp.com/api/v1/orders';
+  Url = 'https://mina-house-api.herokuapp.com/api/v1/orders';
+  
   constructor(private http: HttpClient) {}
   storage = localStorage.getItem('user');
   getToken() {
