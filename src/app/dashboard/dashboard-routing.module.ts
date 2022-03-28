@@ -5,14 +5,14 @@ import { AccountOverviewComponent } from './components/account-overview/account-
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { OrdersComponent } from './components/orders/orders.component';
-import { SavedItemsComponent } from './components/saved-items/saved-items.component';
+
 
 const routes: Routes = [
   {path:'customer',component:LayoutComponent, children:[
 
     {path:'account/overview',component:AccountOverviewComponent},
     {path:'account/edit',component:AccountDetailsComponent},
-    {path:'wishlist',component:SavedItemsComponent},
+
     {path:'new-password',component:ChangePasswordComponent},
     //we might not need the order component
     {path:'orders',component:OrdersComponent},

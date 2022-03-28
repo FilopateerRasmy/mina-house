@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+
 import { Ireview } from '../shared/reviews';
 import jwt_decode from 'jwt-decode'
 
@@ -39,19 +39,19 @@ getInfo(){
 }
 
  createReview(reviewData: Ireview){
-   return this.http.post<{review:Ireview}>(`https://mina-house.herokuapp.com/api/v1/reviews`,reviewData)
+   return this.http.post<{review:Ireview}>(`https://mina-house-api.herokuapp.com/api/v1/reviews`,reviewData)
  }
  getProductReviews(id:string){
-   return this.http.get<{reviews:Ireview[]}>(`https://mina-house.herokuapp.com/api/v1/reviews/${id}`)
+   return this.http.get<{reviews:Ireview[]}>(`https://mina-house-api.herokuapp.com/api/v1/reviews/${id}`)
  }
 
 
  deleteReview(id:string){
-  return this.http.delete(`https://mina-house.herokuapp.com/api/v1/reviews/${id}`)
+  return this.http.delete(`https://mina-house-api.herokuapp.com/api/v1/reviews/${id}`)
  }
 
  updateReview(id:string,reviewData: Ireview){
-  return this.http.patch(`https://mina-house.herokuapp.com/api/v1/reviews/${id}`,reviewData)
+  return this.http.patch(`https://mina-house-api.herokuapp.com/api/v1/reviews/${id}`,reviewData)
  }
  
 
