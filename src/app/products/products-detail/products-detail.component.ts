@@ -19,6 +19,7 @@ export class ProductsDetailComponent implements OnInit {
   msg = '';
   quantity: number = 1;
   isLoading = true;
+  arrived=false
   constructor(
     private route: ActivatedRoute,
     private productService: ProductsService,
@@ -34,6 +35,7 @@ export class ProductsDetailComponent implements OnInit {
           next: (result) => {
             this.isLoading = false;
             this.product = result.product;
+            this.arrived = true;
           },
           error: (err) => {
             this.isLoading = false;
