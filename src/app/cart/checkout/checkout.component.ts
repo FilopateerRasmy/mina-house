@@ -77,5 +77,7 @@ export class CheckoutComponent implements OnInit {
         console.log(err.error.msg);
       },
     });
+
+    this.router.navigate(['/']);
   }
 }
