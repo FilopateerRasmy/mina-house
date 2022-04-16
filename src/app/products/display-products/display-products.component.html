@@ -24,7 +24,7 @@
             <p-rating [ngModel]="product.averageRating" [readonly]="true" [cancel]="false"></p-rating>
             
             <i class="pi pi-tag product-category-icon"></i><span
-              class="product-category">{{product.category.name}}</span>
+              class="product-category">{{product.categoryName}}</span>
           </div>
           <div class="product-list-action">
             <span class="product-price">{{product.price + ' LE'}}</span>
@@ -43,7 +43,7 @@
           <div class="product-grid-item-top">
             <div>
               <i class="pi pi-tag product-category-icon"></i>
-              <span class="product-category">{{product.category.name}}</span>
+              <span class="product-category">{{product.categoryName}}</span>
             </div>
 
           </div>

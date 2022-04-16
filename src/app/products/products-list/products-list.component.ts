@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {  ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { catchError, EMPTY, Observable, tap } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from 'src/app/shared/products';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  styleUrls: ['./products-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+ 
 })
 export class ProductsListComponent implements OnInit {
-  listOfProducts:IProduct[] = []
+  listOfProducts:Observable<IProduct[]> | undefined;
   isLoading = true;
   msg='';
   noData = false;
@@ -20,26 +23,29 @@ ngOnInit(): void {
   this.route.paramMap.subscribe( (params:ParamMap) => {
     const id = params.get('id');
     if(id){
-      this.productService.getProductsWithCategories(id).subscribe({
-        next: (result)=>{
-          this.isLoading = false;
-          this.noData = result.products.length ? false : true
-          this.listOfProducts = result.products;
-        },
-        error: error => {
-          this.isLoading = false;
-          this.msg = error.error.msg || error.message
-        }
-      })
+   this.listOfProducts =  this.productService.getProductsWithCategories(id).pipe(
+     tap((products)=>{
+       this.isLoading = false;
+       this.noData = products.length ? false : true;
+     }),
+     catchError((err)=>{
+       this.isLoading = false;
+       this.msg = err.error.msg;
+       return EMPTY;
+     })
+   )
     }else{
-      this.productService.getAllProducts().subscribe({
-        next: (result) =>{
-          this.listOfProducts = result.products
-        }, error: error => {
-          this.isLoading = false;
-          this.msg = error.error.msg || error.message
-        }
+    this.listOfProducts =  this.productService.productsWithCategory$.pipe(
+      tap((products)=>{
+        this.isLoading = false;
+        this.noData = products.length ? false : true;
+      }),
+      catchError((err)=>{
+        this.isLoading = false;
+        this.msg = err.error.msg;
+        return EMPTY;
       })
+    )
     }
   })
   }

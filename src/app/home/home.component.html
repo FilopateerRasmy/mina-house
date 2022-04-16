@@ -4,9 +4,12 @@
     alt="">
 
 </div>
+
 <div class="fadeinleft animation-duration-1000 overflow-x-hidden">
   <h2 class="text-center mt-3">Categories</h2>
-  <p-carousel [value]="categories" [numVisible]="3" [numScroll]="3" [circular]="true"
+
+  <ng-container *ngIf="categories$ | async as categories">
+    <p-carousel [value]="categories" [numVisible]="3" [numScroll]="3" [circular]="true"
     [responsiveOptions]="responsiveOptions">
 
     <ng-template let-category pTemplate="item">
@@ -23,24 +26,30 @@
       </div>
     </ng-template>
   </p-carousel>
+  </ng-container>
+
 
   <h2 class="text-center mt-3">Featured</h2>
-  <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true"
-    [responsiveOptions]="responsiveOptions">
-    <ng-template let-product pTemplate="item">
-      <ng-container *ngIf="product.featured">
-        <div class="product-item cursor-pointer">
-          <div class="product-item-content">
-            <div class="m-3 ">
-              <img src="{{product.image}}" [alt]="product.name" class="w-full categoty-image border-round"
-                [routerLink]="['/products', product._id]" />
-            </div>
-            <div>
-              <h4 class="mb-1 text-center">{{product.name}}</h4>
+  <ng-container *ngIf="products$ | async as products">
+
+    <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true"
+      [responsiveOptions]="responsiveOptions">
+      <ng-template let-product pTemplate="item">
+        <ng-container *ngIf="product.featured">
+          <div class="product-item cursor-pointer">
+            <div class="product-item-content">
+              <div class="m-3 ">
+                <img [src]="product.image" [alt]="product.name" class="w-full categoty-image border-round"
+                  [routerLink]="['/products', product._id]" />
+              </div>
+              <div>
+                <h4 class="mb-1 text-center">{{product.name}}</h4>
+              </div>
             </div>
           </div>
-        </div>
-      </ng-container>
-    </ng-template>
-  </p-carousel>
+        </ng-container>
+      </ng-template>
+    </p-carousel>
+  </ng-container>
+
 </div>

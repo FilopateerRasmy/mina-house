@@ -2,8 +2,10 @@
     <p-progressSpinner [style]="{width: '100px', height: '80px'}" styleClass="custom-spinner " strokeWidth="4"
       fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
   </div>
+<ng-container *ngIf="listOfProducts | async as listOfProducts">
+  <app-display-products *ngIf="!msg" [products]="listOfProducts"></app-display-products>
 
-<app-display-products *ngIf="!msg" [products]="listOfProducts"></app-display-products>
+</ng-container>
 
 
 <h2 class="text-center mt-8" *ngIf="msg && !isLoading">{{msg}}</h2>
