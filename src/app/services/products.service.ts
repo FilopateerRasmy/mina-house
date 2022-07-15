@@ -14,7 +14,7 @@ export class ProductsService {
 
   getProductsWithCategories(id: string): Observable<IProduct[]> {
     return this.http.get<{ products: IProduct[]; numOfPages: number }>(`https://mina-house-api.herokuapp.com/api/v1/products?category=${id}`).pipe(pluck("products"),
-      shareReplay(1)
+      shareReplay()
     )
   }
 
@@ -29,7 +29,7 @@ export class ProductsService {
       ...product,
       categoryName: categories.find(cat => product.category === cat._id)?.name
     } as IProduct))),
-    shareReplay(1)
+    shareReplay()
 
   )
 
