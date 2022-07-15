@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private auth:AuthService, private router:Router) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
 
   msg = ''
 
@@ -26,24 +26,23 @@ export class LoginComponent implements OnInit {
   getField(field: string) {
     return this.loginForm.get(field);
   }
-  onLogin()
-  {
-    
+  onLogin() {
+
     this.auth.login(this.loginForm.value).subscribe({
-      next:(res)=>{
+      next: (res) => {
 
         this.auth.saveUser(res.token, res.user.name);
         this.router.navigateByUrl('/');
- 
-     
 
-        },
-      error:(err:any)=> {this.msg = err.error.msg}
-      
+
+
+      },
+      error: (err: any) => { this.msg = err.error.msg }
+
     })
   }
-  onLogout(){
-   
+  onLogout() {
+
   }
 
 }

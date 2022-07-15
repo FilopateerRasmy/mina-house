@@ -14,7 +14,7 @@ export class AuthService {
     name:'',
     isLogin:false
   }
-  
+
 
 
   isAuthanticated = new BehaviorSubject(this.userData);
@@ -41,7 +41,7 @@ export class AuthService {
     return this.http.post<any>(this.URL + 'reset-password', resetPassword);
   }
 
-  
+
 
   saveUser(token:string, name:string){
     this.userData.isLogin = true;
@@ -71,5 +71,5 @@ export class AuthService {
       this.isAuthanticated.next(this.userData)
     }
 
-    
+
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { PrimengModule } from '../primeng/primeng.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot - reset password/forgot-password/forgot-password.component';
@@ -24,6 +24,7 @@ import { ResetPasswordComponent } from './forgot - reset password/reset-password
     PrimengModule,
     UsersRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UsersModule { }

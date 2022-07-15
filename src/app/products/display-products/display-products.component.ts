@@ -23,6 +23,7 @@ export class DisplayProductsComponent implements OnInit, OnChanges {
     private cartService: CartService,
     private messageService: MessageService
   ) {}
+
   @Input() products: IProduct[] = [];
   beforeFilter: IProduct[] = [];
   ngOnInit(): void {}
